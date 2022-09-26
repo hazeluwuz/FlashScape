@@ -20,7 +20,7 @@ FlashScape is a simple clone of the Flashcard app "BrainScape".
 ## Wiki Links:
 
 * [Database Schema](https://github.com/hazeluwuz/FlashScape/wiki/DB-Schema)
-* [Features](https://github.com/hazeluwuz/FlashScape/wiki/User-Stories)
+* [User Stories](https://github.com/hazeluwuz/FlashScape/wiki/User-Stories)
 * [API Routes](https://github.com/hazeluwuz/FlashScape/wiki/API-Routes)
 * [Redux State Shape](https://github.com/hazeluwuz/FlashScape/wiki/Redux-State-Shape)
 * [App Features](https://github.com/hazeluwuz/FlashScape/wiki/App-Features)
