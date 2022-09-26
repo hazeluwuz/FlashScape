@@ -24,6 +24,7 @@ FlashScape is a simple clone of the Flashcard app "BrainScape".
 * [API Routes](https://github.com/hazeluwuz/FlashScape/wiki/API-Routes)
 * [Redux State Shape](https://github.com/hazeluwuz/FlashScape/wiki/Redux-State-Shape)
 * [App Features](https://github.com/hazeluwuz/FlashScape/wiki/App-Features)
+* [Wireframes] (https://github.com/hazeluwuz/FlashScape/wiki/Wireframes)
 ***
 
 ## How to run FlashScape Locally:
