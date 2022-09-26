@@ -15,7 +15,7 @@ FlashScape is a simple clone of the Flashcard app "BrainScape".
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-100000?style=for-the-badge&logo=sql&logoColor=BA1212&labelColor=AD0000&color=A90000)&nbsp; 
 
 ##  Live Site
-* [FlashScape](https://notyelp.herokuapp.com/)
+* [FlashScape](https://flashscape.herokuapp.com/)
 
 ## Wiki Links:
 
