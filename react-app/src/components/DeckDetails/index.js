@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { deleteDeckById } from "../../store/deck";
 import DeckForm from "../DeckForm";
+import CardForm from "../CardForm";
+import CardList from "../CardList";
 function DeckDetails() {
   const decks = useSelector((state) => state.decks);
   const { classId, deckId } = useParams();
@@ -26,6 +28,8 @@ function DeckDetails() {
           <button onClick={handleDelete}>Delete</button>
         </div>
         <DeckForm edit={true} />
+        <CardForm />
+        <CardList card_ids={deck.card_ids} />
       </div>
     )
   );

@@ -9,10 +9,11 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 import { getAllClasses } from "./store/class";
+import { getAllDecks } from "./store/deck";
+import { getAllCards } from "./store/card";
 import ClassForm from "./components/ClassForm";
 import ClassList from "./components/ClassList";
 import ClassDetails from "./components/ClassDetails";
-import { getAllDecks } from "./store/deck";
 import DeckDetails from "./components/DeckDetails";
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -25,6 +26,7 @@ function App() {
       // Temporary to test backend/state
       await dispatch(getAllClasses());
       await dispatch(getAllDecks());
+      await dispatch(getAllCards());
 
       setLoaded(true);
     })();
