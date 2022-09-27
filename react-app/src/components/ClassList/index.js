@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getAllClasses, deleteClassById } from "../../store/class";
 function ClassList() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,7 +22,7 @@ function ClassList() {
         {classes.map((c) => (
           <li key={c.id}>
             <div>
-              {c.name}
+              <Link to={`/classes/${c.id}`}>{c.name}</Link>
               <button onClick={(e) => handleDelete(e, c.id)}>Delete</button>
             </div>
           </li>

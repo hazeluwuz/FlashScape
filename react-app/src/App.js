@@ -11,7 +11,7 @@ import { authenticate } from "./store/session";
 import { getAllClasses } from "./store/class";
 import ClassForm from "./components/ClassForm";
 import ClassList from "./components/ClassList";
-
+import ClassDetails from "./components/ClassDetails";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -47,9 +47,12 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
+        <ProtectedRoute path="/classes" exact={true}>
           <h1>TEMPORARY CLASS LIST</h1>
           <ClassList />
+        </ProtectedRoute>
+        <ProtectedRoute path="/classes/:classId" exact={true}>
+          <ClassDetails />
         </ProtectedRoute>
         {/* BACKEND TESTING ROUTES */}
         <ProtectedRoute path="/class-form" exact={true}>
