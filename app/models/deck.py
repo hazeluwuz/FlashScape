@@ -8,7 +8,7 @@ class Deck(db.Model):
   class_id = db.Column(db.Integer, db.ForeignKey("classes.id"), nullable=False)
 
   class_parent = db.relationship("Class", back_populates="decks")
-  cards = db.relationship("Card", back_populates="deck_parent")
+  cards = db.relationship("Card", back_populates="deck_parent", cascade="all, delete-orphan")
 
   def to_dict(self):
     return {
