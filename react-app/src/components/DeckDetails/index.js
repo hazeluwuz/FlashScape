@@ -28,7 +28,7 @@ function DeckDetails() {
           <button onClick={handleDelete}>Delete</button>
         </div>
         <DeckForm edit={true} />
-        <CardForm />
+        <CardForm edit={false} />
         <CardList card_ids={deck.card_ids} />
       </div>
     )

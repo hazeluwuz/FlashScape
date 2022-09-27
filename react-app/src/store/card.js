@@ -1,3 +1,4 @@
+import { addCardToDeck } from "./deck";
 const GET_CARDS = "cards/GET_CARDS";
 const CREATE_CARD = "cards/CREATE_CARD";
 const UPDATE_CARD = "cards/UPDATE_CARD";
@@ -50,6 +51,7 @@ export const createNewCard = (card) => async (dispatch) => {
   if (response.ok) {
     const newCard = await response.json();
     dispatch(createCard(newCard));
+    dispatch(addCardToDeck(newCard.id, newCard.deck_id));
     return newCard;
   }
 };

@@ -1,5 +1,14 @@
+import { useDispatch } from "react-redux";
+import { deleteCardById } from "../../store/card";
+import CardForm from "../CardForm";
 import "./CardDisplay.css";
 function CardDisplay({ card }) {
+  const dispatch = useDispatch();
+  const handleDelete = (e) => {
+    e.preventDefault();
+    dispatch(deleteCardById(card.id));
+  };
+
   if (!card) return null;
   return (
     <div className="card-display">
@@ -9,6 +18,8 @@ function CardDisplay({ card }) {
       <div>
         <h1>{card.answer}</h1>
       </div>
+      <CardForm edit={true} card={card} />
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 }

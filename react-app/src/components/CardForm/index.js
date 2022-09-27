@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { createNewCard } from "../../store/card";
-function CardForm() {
+import { createNewCard, updateCardById } from "../../store/card";
+function CardForm({ edit, card }) {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const { deckId } = useParams();
@@ -13,13 +13,27 @@ function CardForm() {
     const cardData = {
       deck_id: deckId,
       question,
+      // mastery eventually
       answer,
     };
     const res = await dispatch(createNewCard(cardData));
     console.log(res);
   };
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    const cardData = {
+      id: card.id,
+      deck_id: deckId,
+      question,
+      // mastery eventually
+      answer,
+    };
+    const res = await dispatch(updateCardById(cardData));
+    console.log(res);
+  };
   return (
-    <form onSubmit={handleCreate}>
+    <form onSubmit={edit ? handleEdit : handleCreate}>
       <label>Question:</label>
       <input
         type="text"
@@ -34,7 +48,7 @@ function CardForm() {
         onChange={(e) => setAnswer(e.target.value)}
         required
       />
-      <button type="submit">Create Card</button>
+      <button type="submit">{edit ? "Edit Card" : "Create Card"}</button>
     </form>
   );
 }
