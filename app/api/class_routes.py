@@ -1,0 +1,72 @@
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.models import Class, db
+from app.forms import ClassForm
+from .auth_routes import validation_errors_to_error_messages
+
+class_routes = Blueprint("classes", __name__)
+
+
+# Get all Classes
+@class_routes.route("/")
+@login_required
+def classes():
+    classes = Class.query.all()
+    return {"classes": [class_.to_dict() for class_ in classes]}
+
+
+# Get a Class by id
+@class_routes.route("/<int:id>")
+@login_required
+def class_by_id(id):
+    class_ = Class.query.get(id)
+    return class_.to_dict()
+
+
+# Get all Classes for a User
+@class_routes.route("/current")
+@login_required
+def classes_by_user():
+    classes = Class.query.filter(Class.owner_id == current_user.id).all()
+    return {"classes": [class_.to_dict() for class_ in classes]}
+
+
+# Create a new Class
+@class_routes.route("/", methods=["POST"])
+@login_required
+def create_class():
+    form = ClassForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        class_ = Class(
+            name=form.data["name"],
+            owner_id=current_user.id,
+        )
+        db.session.add(class_)
+        db.session.commit()
+        return class_.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+# Update a Class
+@class_routes.route("/<int:id>", methods=["PUT"])
+@login_required
+def update_class(id):
+    form = ClassForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        class_ = Class.query.get(id)
+        class_.name = form.data["name"]
+        db.session.commit()
+        return class_.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+# Delete a Class
+@class_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_class(id):
+    class_ = Class.query.get(id)
+    db.session.delete(class_)
+    db.session.commit()
+    return class_.to_dict()
