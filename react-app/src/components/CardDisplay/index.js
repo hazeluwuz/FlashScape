@@ -10,6 +10,7 @@ function CardDisplay({ card }) {
   };
 
   if (!card) return null;
+
   return (
     <div className="card-display">
       <div>

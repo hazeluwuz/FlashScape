@@ -1,4 +1,4 @@
-import { addCardToDeck } from "./deck";
+import { addCardToDeck, removeCardFromDeck } from "./deck";
 const GET_CARDS = "cards/GET_CARDS";
 const CREATE_CARD = "cards/CREATE_CARD";
 const UPDATE_CARD = "cards/UPDATE_CARD";
@@ -76,7 +76,10 @@ export const deleteCardById = (cardId) => async (dispatch) => {
     method: "DELETE",
   });
   if (response.ok) {
+    const data = await response.json();
+    console.log("DELETED_CARD:", data);
     dispatch(deleteCard(cardId));
+    dispatch(removeCardFromDeck(cardId, data.deck_id));
   }
 };
 

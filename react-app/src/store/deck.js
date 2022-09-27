@@ -4,6 +4,7 @@ const CREATE_DECK = "decks/CREATE_DECK";
 const DELETE_DECK = "decks/DELETE_DECK";
 const UPDATE_DECK = "decks/UPDATE_DECK";
 const ADD_CARD_TO_DECK = "decks/ADD_CARD_TO_DECK";
+const REMOVE_CARD_FROM_DECK = "decks/REMOVE_CARD_FROM_DECK";
 
 const getDecks = (decks) => ({
   type: GET_DECKS,
@@ -27,6 +28,11 @@ const deleteDeck = (deckId) => ({
 
 export const addCardToDeck = (cardId, deckId) => ({
   type: ADD_CARD_TO_DECK,
+  payload: { cardId, deckId },
+});
+
+export const removeCardFromDeck = (cardId, deckId) => ({
+  type: REMOVE_CARD_FROM_DECK,
   payload: { cardId, deckId },
 });
 
@@ -96,6 +102,12 @@ export default function reducer(state = {}, action) {
       return { ...state, [action.payload.id]: action.payload };
     case ADD_CARD_TO_DECK:
       newState[action.payload.deckId].card_ids.push(action.payload.cardId);
+      return newState;
+    case REMOVE_CARD_FROM_DECK:
+      const { cardId, deckId } = action.payload;
+      const cardIds = newState[deckId].card_ids;
+      cardIds.splice(cardIds.indexOf(cardId), 1);
+      return newState;
     case DELETE_DECK:
       delete newState[action.payload];
       return newState;

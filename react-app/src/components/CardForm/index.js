@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { createNewCard, updateCardById } from "../../store/card";
 function CardForm({ edit, card }) {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [question, setQuestion] = useState(card?.question || "");
+  const [answer, setAnswer] = useState(card?.answer || "");
   const { deckId } = useParams();
   const dispatch = useDispatch();
 
