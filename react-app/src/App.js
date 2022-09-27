@@ -53,7 +53,8 @@ function App() {
         </ProtectedRoute>
         {/* BACKEND TESTING ROUTES */}
         <ProtectedRoute path="/class-form" exact={true}>
-          <ClassForm />
+          <ClassForm edit={false} />
+          <ClassForm edit={true} />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

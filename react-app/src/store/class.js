@@ -36,11 +36,28 @@ export const createNewClass = (classData) => async (dispatch) => {
   }
 };
 
+export const updateClass = (classData) => async (dispatch) => {
+  const response = await fetch(`/api/classes/${classData.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(classData),
+  });
+  if (response.ok) {
+    const newClassData = await response.json();
+    dispatch(updateClass(newClassData));
+    return newClassData;
+  }
+};
+
 export default function reducer(state = {}, action) {
   switch (action.type) {
     case GET_CLASSES:
       return action.payload;
     case CREATE_CLASS:
+      return { ...state, [action.payload.id]: action.payload };
+    case UPDATE_CLASS:
       return { ...state, [action.payload.id]: action.payload };
     default:
       return state;

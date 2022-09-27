@@ -12,7 +12,9 @@ function ClassList() {
     isLoaded && (
       <ul>
         {classes.map((c) => (
-          <li key={c.id}>{c.name}</li>
+          <li key={c.id}>
+            <div>{c.name}</div>
+          </li>
         ))}
       </ul>
     )
