@@ -12,7 +12,7 @@ class_routes = Blueprint("classes", __name__)
 @login_required
 def classes():
     classes = Class.query.all()
-    return {"classes": [class_.to_dict() for class_ in classes]}
+    return {c.id: c.to_dict() for c in classes}
 
 
 # Get a Class by id
@@ -28,7 +28,7 @@ def class_by_id(id):
 @login_required
 def classes_by_user():
     classes = Class.query.filter(Class.owner_id == current_user.id).all()
-    return {"classes": [class_.to_dict() for class_ in classes]}
+    return {c.id: c.to_dict() for c in classes}
 
 
 # Create a new Class
