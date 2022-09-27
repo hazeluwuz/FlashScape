@@ -67,6 +67,9 @@ export const deleteClassById = (classId) => async (dispatch) => {
   });
   if (response.ok) {
     dispatch(deleteClass(classId));
+  } else if (response.status < 500) {
+    const data = await response.json();
+    return data;
   }
 };
 
@@ -78,6 +81,10 @@ export default function reducer(state = {}, action) {
       return { ...state, [action.payload.id]: action.payload };
     case UPDATE_CLASS:
       return { ...state, [action.payload.id]: action.payload };
+    case DELETE_CLASS:
+      const newState = { ...state };
+      delete newState[action.payload];
+      return newState;
     default:
       return state;
   }

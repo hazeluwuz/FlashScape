@@ -38,13 +38,13 @@ def create_class():
     form = ClassForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        class_ = Class(
+        c = Class(
             name=form.data["name"],
             owner_id=current_user.id,
         )
-        db.session.add(class_)
+        db.session.add(c)
         db.session.commit()
-        return class_.to_dict()
+        return c.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -66,7 +66,10 @@ def update_class(id):
 @class_routes.route("/<int:id>", methods=["DELETE"])
 @login_required
 def delete_class(id):
-    class_ = Class.query.get(id)
-    db.session.delete(class_)
-    db.session.commit()
-    return class_.to_dict()
+    c = Class.query.get(id)
+    if c.owner_id == current_user.id:
+        db.session.delete(c)
+        db.session.commit()
+        return {'message': 'Successfully Deleted'}
+    else:
+        return {'errors': 'Unauthorized'}, 401

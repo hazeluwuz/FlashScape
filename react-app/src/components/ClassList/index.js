@@ -10,8 +10,10 @@ function ClassList() {
   }, [dispatch]);
   const handleDelete = async (e, id) => {
     e.preventDefault();
-    const test = await dispatch(deleteClassById(id));
-    console.log(test);
+    const res = await dispatch(deleteClassById(id));
+    if (res && res.errors) {
+      alert(res.errors);
+    }
   };
   return (
     isLoaded && (
