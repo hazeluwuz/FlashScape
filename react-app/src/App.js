@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -16,6 +16,7 @@ import DeckDetails from "./components/DeckDetails";
 import SplashPage from "./components/SplashPage";
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,7 +38,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {!user && <NavBar />}
+      {/* Render Sidebar here (for dashboard) */}
       <Switch>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />

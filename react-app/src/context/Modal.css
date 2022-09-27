@@ -32,6 +32,10 @@
   width: 400px;
   max-width: 400px;
   z-index: 999;
+  animation-duration: 400ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
 }
 
 .modal-title {
@@ -41,4 +45,15 @@
   font-weight: 700;
   text-align: center;
   text-transform: capitalize;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(0, -60px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
