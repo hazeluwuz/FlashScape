@@ -12,6 +12,7 @@ import { getAllClasses } from "./store/class";
 import ClassForm from "./components/ClassForm";
 import ClassList from "./components/ClassList";
 import ClassDetails from "./components/ClassDetails";
+import { getAllDecks } from "./store/deck";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
 
       // Temporary to test backend/state
       await dispatch(getAllClasses());
+      await dispatch(getAllDecks());
 
       setLoaded(true);
     })();
