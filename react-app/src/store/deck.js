@@ -13,14 +13,14 @@ const createDeck = (deck) => ({
   payload: deck,
 });
 
+const updateDeck = (deck) => ({
+  type: UPDATE_DECK,
+  payload: deck,
+});
+
 const deleteDeck = (deckId) => ({
   type: DELETE_DECK,
   payload: deckId,
-});
-
-const updateDeck = (deck) => ({
-  type: DELETE_DECK,
-  payload: deck,
 });
 
 export const getAllDecks = () => async (dispatch) => {
@@ -66,7 +66,14 @@ export const deleteDeckById = (deckId) => async (dispatch) => {
     method: "DELETE",
   });
   if (response.ok) {
+    const data = await response.json();
     dispatch(deleteDeck(deckId));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
   }
 };
 

@@ -37,7 +37,6 @@ def create_deck():
         deck = Deck(
             name=form.data['name'],
             class_id=form.data['class_id'],
-            owner_id=current_user.id
         )
         db.session.add(deck)
         db.session.commit()

@@ -31,6 +31,14 @@ export const getAllClasses = () => async (dispatch) => {
   }
 };
 
+export const getClassById = (classId) => async (dispatch) => {
+  const response = await fetch(`/api/classes/${classId}`);
+  if (response.ok) {
+    const classData = await response.json();
+    dispatch(updateClass(classData));
+  }
+};
+
 export const createNewClass = (classData) => async (dispatch) => {
   const response = await fetch("/api/classes/", {
     method: "POST",

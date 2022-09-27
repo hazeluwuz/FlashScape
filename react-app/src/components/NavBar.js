@@ -22,11 +22,6 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/class-form" exact={true} activeClassName="active">
-            Class Form
-          </NavLink>
-        </li>
-        <li>
           <NavLink to="/classes" exact={true} activeClassName="active">
             All Classes
           </NavLink>

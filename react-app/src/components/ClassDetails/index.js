@@ -1,18 +1,23 @@
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { getClassById } from "../../store/class";
+import DeckList from "../DeckList";
 function ClassDetails() {
-  const classes = useSelector((state) => state.classes);
   const { classId } = useParams();
-  const [curClass, setCurClass] = useState(null);
+  const classes = useSelector((state) => state.classes);
+  const dispatch = useDispatch();
+  const curClass = classes[classId];
   useEffect(() => {
-    setCurClass(classes[classId]);
-  }, [classes, classId]);
+    dispatch(getClassById(classId));
+  }, [dispatch]);
 
   return (
     curClass && (
       <div className="class-details">
         <h1>{curClass.name}</h1>
+        <h2>Decks</h2>
+        <DeckList deckIds={curClass.deck_ids} />
       </div>
     )
   );

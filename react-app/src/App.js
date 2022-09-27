@@ -13,6 +13,7 @@ import ClassForm from "./components/ClassForm";
 import ClassList from "./components/ClassList";
 import ClassDetails from "./components/ClassDetails";
 import { getAllDecks } from "./store/deck";
+import DeckDetails from "./components/DeckDetails";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -57,9 +58,8 @@ function App() {
         <ProtectedRoute path="/classes/:classId" exact={true}>
           <ClassDetails />
         </ProtectedRoute>
-        <ProtectedRoute path="/class-form" exact={true}>
-          <ClassForm edit={false} />
-          <ClassForm edit={true} />
+        <ProtectedRoute path="/classes/:classId/decks/:deckId" exact={true}>
+          <DeckDetails />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
