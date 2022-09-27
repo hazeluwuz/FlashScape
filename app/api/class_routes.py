@@ -19,8 +19,8 @@ def classes():
 @class_routes.route("/<int:id>")
 @login_required
 def class_by_id(id):
-    class_ = Class.query.get(id)
-    return class_.to_dict()
+    c = Class.query.get(id)
+    return c.to_dict()
 
 
 # Get all Classes for a User
@@ -55,10 +55,10 @@ def update_class(id):
     form = ClassForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        class_ = Class.query.get(id)
-        class_.name = form.data["name"]
+        c = Class.query.get(id)
+        c.name = form.data["name"]
         db.session.commit()
-        return class_.to_dict()
+        return c.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
