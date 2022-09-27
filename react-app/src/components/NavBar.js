@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import LoginModal from "./auth/LoginModal";
 import LogoutButton from "./auth/LogoutButton";
 import "./NavBar.css";
 const NavBar = () => {
@@ -12,7 +13,7 @@ const NavBar = () => {
       </div>
       <div className="nav-links">
         <div className="login-container">
-          <button className="login-button">Log In</button>
+          <LoginModal />
         </div>
         <div className="signup-container">
           <button className="signup-button">Get Started</button>
