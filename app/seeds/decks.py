@@ -8,7 +8,7 @@ def seed_decks():
     deck2 = Deck(
         name='Deck 2', class_id=2)
     deck3 = Deck(
-        name='Class 3', class_id=3)
+        name='Deck 3', class_id=3)
 
     db.session.add(deck1)
     db.session.add(deck2)
