@@ -9,6 +9,7 @@ class Class(db.Model):
   # TODO:
   #  - Add relationship to Decks once implemented
   owner = db.relationship('User', back_populates='classes')
+  decks = db.relationship('Deck', back_populates='class_parent')
 
   def to_dict(self):
     return {

@@ -47,6 +47,7 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
+        {/* BACKEND TESTING ROUTES */}
         <ProtectedRoute path="/classes" exact={true}>
           <h1>TEMPORARY CLASS LIST</h1>
           <ClassList />
@@ -54,7 +55,6 @@ function App() {
         <ProtectedRoute path="/classes/:classId" exact={true}>
           <ClassDetails />
         </ProtectedRoute>
-        {/* BACKEND TESTING ROUTES */}
         <ProtectedRoute path="/class-form" exact={true}>
           <ClassForm edit={false} />
           <ClassForm edit={true} />
