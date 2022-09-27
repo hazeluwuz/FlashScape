@@ -1,3 +1,4 @@
+import { addDeckToClass } from "./class";
 const GET_DECKS = "decks/GET_DECKS";
 const CREATE_DECK = "decks/CREATE_DECK";
 const DELETE_DECK = "decks/DELETE_DECK";
@@ -42,6 +43,7 @@ export const createNewDeck = (deck) => async (dispatch) => {
   if (response.ok) {
     const newDeck = await response.json();
     dispatch(createDeck(newDeck));
+    dispatch(addDeckToClass(newDeck.id, newDeck.class_id));
     return newDeck;
   }
 };

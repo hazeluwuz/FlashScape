@@ -22,7 +22,6 @@ function ClassList() {
       <div>
         <div>
           <ClassForm />
-          <ClassForm edit={true} />
         </div>
         <ul>
           {classes.map((c) => (
