@@ -1,0 +1,51 @@
+.carousel-item {
+  background-image: url("https://www.brainscape.com/assets/cms/public-views/pages/landing/band-1/image-3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+}
+
+.carousel-overlay {
+  background: linear-gradient(10deg, #19202a, transparent);
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.main-splash-container {
+  position: relative;
+  overflow-y: hidden;
+  max-height: 100vh;
+}
+
+.splash-details {
+  position: absolute;
+  bottom: 20%;
+  z-index: 2;
+  margin-right: 4%;
+  margin-left: 4%;
+  white-space: pre-line !important;
+}
+
+.splash-header {
+  color: #ffffff;
+  font-family: "Mont Bold", Mont, sans-serif !important;
+  font-weight: 700 !important;
+  margin: 0;
+  font-size: 135px;
+  white-space: pre-line !important;
+}
+.splash-subheader {
+  color: #ffffff;
+  font-weight: 300;
+  margin-bottom: 4rem;
+  line-height: 0;
+  font-size: 33px;
+}

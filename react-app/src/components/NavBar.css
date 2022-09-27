@@ -7,6 +7,7 @@
   align-items: center;
   width: 100vw;
   height: 4.5em;
+  z-index: 5;
 }
 .nav-logo {
   background-image: url("https://www.brainscape.com/assets/cms/public-views/shared/Brainscape-logo.svg");
