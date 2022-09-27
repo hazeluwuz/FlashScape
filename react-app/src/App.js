@@ -15,6 +15,7 @@ import ClassForm from "./components/ClassForm";
 import ClassList from "./components/ClassList";
 import ClassDetails from "./components/ClassDetails";
 import DeckDetails from "./components/DeckDetails";
+import SplashPage from "./components/SplashPage";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -63,6 +64,9 @@ function App() {
         <ProtectedRoute path="/classes/:classId/decks/:deckId" exact={true}>
           <DeckDetails />
         </ProtectedRoute>
+        <Route path="/">
+          <SplashPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
