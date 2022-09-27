@@ -13,6 +13,16 @@ const createClass = (classData) => ({
   payload: classData,
 });
 
+const deleteClass = (classId) => ({
+  type: DELETE_CLASS,
+  payload: classId,
+});
+
+const updateClass = (classData) => ({
+  type: UPDATE_CLASS,
+  payload: classData,
+});
+
 export const getAllClasses = () => async (dispatch) => {
   const response = await fetch("/api/classes/");
   if (response.ok) {
@@ -36,7 +46,7 @@ export const createNewClass = (classData) => async (dispatch) => {
   }
 };
 
-export const updateClass = (classData) => async (dispatch) => {
+export const updateClassById = (classData) => async (dispatch) => {
   const response = await fetch(`/api/classes/${classData.id}`, {
     method: "PUT",
     headers: {
@@ -48,6 +58,15 @@ export const updateClass = (classData) => async (dispatch) => {
     const newClassData = await response.json();
     dispatch(updateClass(newClassData));
     return newClassData;
+  }
+};
+
+export const deleteClassById = (classId) => async (dispatch) => {
+  const response = await fetch(`/api/classes/${classId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    dispatch(deleteClass(classId));
   }
 };
 

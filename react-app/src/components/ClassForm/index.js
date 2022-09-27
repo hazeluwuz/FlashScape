@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { createNewClass, updateClass } from "../../store/class";
+import { createNewClass, updateClassById } from "../../store/class";
 
 function ClassForm({ edit }) {
   const [name, setName] = useState("");
@@ -21,7 +21,7 @@ function ClassForm({ edit }) {
       id: 1,
       name,
     };
-    const temp = await dispatch(updateClass(classData));
+    const temp = await dispatch(updateClassById(classData));
     console.log(temp);
   };
 
