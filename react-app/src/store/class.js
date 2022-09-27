@@ -8,6 +8,11 @@ const getClasses = (classes) => ({
   payload: classes,
 });
 
+const createClass = (classData) => ({
+  type: CREATE_CLASS,
+  payload: classData,
+});
+
 export const getAllClasses = () => async (dispatch) => {
   const response = await fetch("/api/classes/");
   if (response.ok) {
@@ -16,10 +21,27 @@ export const getAllClasses = () => async (dispatch) => {
   }
 };
 
+export const createNewClass = (classData) => async (dispatch) => {
+  const response = await fetch("/api/classes/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(classData),
+  });
+  if (response.ok) {
+    const newClassData = await response.json();
+    dispatch(createClass(newClassData));
+    return newClassData;
+  }
+};
+
 export default function reducer(state = {}, action) {
   switch (action.type) {
     case GET_CLASSES:
       return action.payload;
+    case CREATE_CLASS:
+      return { ...state, [action.payload.id]: action.payload };
     default:
       return state;
   }
