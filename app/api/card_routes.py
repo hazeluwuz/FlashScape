@@ -53,4 +53,4 @@ def delete_card(id):
     card = Card.query.get(id)
     db.session.delete(card)
     db.session.commit()
-    return {"message": "Successfully Delete"}
+    return card.to_dict()
