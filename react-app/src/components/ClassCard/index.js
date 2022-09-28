@@ -21,7 +21,7 @@ function ClassCard({ classData }) {
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
         className="class-card-container"
-        to={`/dashboard/${classData.id}`}
+        to={`/dashboard/${classData.id}/decks`}
       >
         <div className="class-card-icon-container">
           <img

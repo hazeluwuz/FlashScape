@@ -59,7 +59,7 @@ function ClassDetails() {
             About
           </NavLink>
           <NavLink to={`${url}/decks`} className="class-details-nav-item">
-            Decks
+            Decks ({curClass.deck_ids.length})
           </NavLink>
         </div>
         <Switch>

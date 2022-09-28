@@ -18,7 +18,7 @@ function ClassList() {
   }, [dispatch]);
 
   if (classes.length > 0) {
-    history.push(`/dashboard/${classes[0].id}`);
+    history.push(`/dashboard/${classes[0].id}/decks`);
   }
 
   return (
