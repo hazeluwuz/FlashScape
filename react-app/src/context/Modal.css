@@ -35,7 +35,7 @@
   animation-duration: 400ms;
   animation-iteration-count: 1;
   animation-fill-mode: both;
-  animation-name: fadeIn;
+  animation-name: fadeSlideIn;
 }
 
 .modal-title {
@@ -47,10 +47,10 @@
   text-transform: capitalize;
 }
 
-@keyframes fadeIn {
+@keyframes fadeSlideIn {
   0% {
     opacity: 0;
-    transform: translate(0, -60px);
+    transform: translate(0, -40px);
   }
   100% {
     opacity: 1;
