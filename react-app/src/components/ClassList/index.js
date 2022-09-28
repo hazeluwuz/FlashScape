@@ -12,13 +12,7 @@ function ClassList() {
   useEffect(() => {
     dispatch(getCurrentUserClasses()).then(() => setIsLoaded(true));
   }, [dispatch]);
-  const handleDelete = async (e, id) => {
-    e.preventDefault();
-    const res = await dispatch(deleteClassById(id));
-    if (res && res.errors) {
-      alert(res.errors);
-    }
-  };
+
   return (
     isLoaded && (
       <div className="user-class-list-container">

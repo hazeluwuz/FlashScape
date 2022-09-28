@@ -15,4 +15,5 @@
   border-bottom: 1px solid rgba(127, 133, 146, 0.44);
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }

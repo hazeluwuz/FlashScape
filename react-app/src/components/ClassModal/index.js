@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "../../context/Modal";
 import ClassForm from "./ClassForm";
 import "./ClassModal.css";
-function ClassModal() {
+function ClassModal({ edit }) {
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => {
     setShowModal(false);
@@ -16,7 +16,7 @@ function ClassModal() {
         <Modal onClose={() => setShowModal(false)}>
           <div className="class-modal">
             <div className="modal-title">New Class</div>
-            <ClassForm closeModal={closeModal} />
+            <ClassForm closeModal={closeModal} edit={edit} />
           </div>
         </Modal>
       )}

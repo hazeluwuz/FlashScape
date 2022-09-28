@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createNewClass, updateClassById } from "../../store/class";
 import "./ClassForm.css";
-function ClassForm({ edit }) {
+function ClassForm({ edit, closeModal }) {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
 
@@ -12,7 +12,7 @@ function ClassForm({ edit }) {
       name,
     };
     const temp = await dispatch(createNewClass(classData));
-    console.log(temp);
+    closeModal();
   };
 
   const handleEdit = async (e) => {
@@ -22,7 +22,7 @@ function ClassForm({ edit }) {
       name,
     };
     const temp = await dispatch(updateClassById(classData));
-    console.log(temp);
+    closeModal();
   };
 
   /*
