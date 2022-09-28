@@ -3,20 +3,24 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  height: 36px;
   margin-right: 10px;
 }
 
 .class-button {
-  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 36px;
+  justify-content: center;
+  margin-top: 5px;
+  font-size: 20px;
 }
 
 .class-edit-button {
   display: flex;
   height: 100%;
+  align-items: center;
   justify-content: center;
   height: 36px;
-  align-items: center;
   padding-left: 5px;
   width: 100%;
   font-size: 20px;

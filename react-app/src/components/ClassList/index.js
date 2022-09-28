@@ -17,10 +17,10 @@ function ClassList() {
     isLoaded && (
       <div className="user-class-list-container">
         <div className="user-class-container">
-          <div>
+          <div className="user-class-inner">
             <h4 className="user-class-header">My Classes ({classes.length})</h4>
+            <ClassModal />
           </div>
-          <ClassModal />
         </div>
         {classes.map((c) => (
           <ClassCard classData={c} />

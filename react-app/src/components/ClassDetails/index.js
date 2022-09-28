@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getClassById } from "../../store/class";
@@ -15,6 +15,8 @@ function ClassDetails() {
     dispatch(getClassById(classId));
   }, [dispatch]);
 
+  if (!curClass) return <Redirect to={`/dashboard`} />;
+
   return (
     curClass && (
       <div className="class-details-header">
@@ -28,7 +30,7 @@ function ClassDetails() {
           </div>
           <div className="class-details-info">
             <div className="class-details-name">
-              <div className="idfk">{curClass.name}</div>
+              <div>{curClass.name}</div>
               <ClassModal edit={true} />
             </div>
             <div className="class-details-creator">

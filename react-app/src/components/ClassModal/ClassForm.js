@@ -8,7 +8,7 @@ function ClassForm({ edit, closeModal }) {
   const { classId } = useParams();
   const curClass = classes[classId];
   const dispatch = useDispatch();
-  const [name, setName] = useState(curClass.name || "");
+  const [name, setName] = useState(curClass?.name || "");
 
   const handleCreation = async (e) => {
     e.preventDefault();
@@ -28,11 +28,6 @@ function ClassForm({ edit, closeModal }) {
     const temp = await dispatch(updateClassById(classData));
     closeModal();
   };
-
-  /*
-   This will end up being a modal in the future
-   Only using this as a test for the backend atm
-  */
 
   return (
     <form onSubmit={edit ? handleEdit : handleCreation} className="class-form">
