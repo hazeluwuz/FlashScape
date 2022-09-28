@@ -33,6 +33,6 @@
   color: #3faee0;
 }
 
-.active {
+.user-class-list-container > .active {
   border-left: 8px solid #fff;
 }

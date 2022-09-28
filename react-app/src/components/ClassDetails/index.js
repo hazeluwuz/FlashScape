@@ -1,4 +1,11 @@
-import { useParams, Redirect } from "react-router-dom";
+import {
+  useParams,
+  Redirect,
+  NavLink,
+  Route,
+  Switch,
+  useRouteMatch,
+} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getClassById } from "../../store/class";
@@ -7,6 +14,7 @@ import "./ClassDetails.css";
 import ClassModal from "../ClassModal";
 function ClassDetails() {
   const { classId } = useParams();
+  const { url } = useRouteMatch();
   const classes = useSelector((state) => state.classes);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -19,7 +27,7 @@ function ClassDetails() {
 
   return (
     curClass && (
-      <div className="class-details-header">
+      <div className="class-details-main-container">
         <div className="class-details-info-container">
           <div className="class-icon-container">
             <img
@@ -40,8 +48,25 @@ function ClassDetails() {
               {/* Study Button/Menu would go here (eventually) */}
             </div>
           </div>
+          <div className="class-mastery-container">
+            {/* NOTE: NOT FUNCTIONAL WILL NEED TO FIX ONCE MASTERY/RATING SCORE IS IMPLEMENTED */}
+            <div className="class-mastery-percent">0.0%</div>
+            <div className="class-mastery-percent-label">Mastery</div>
+          </div>
         </div>
-        {/* <DeckList deckIds={curClass.deck_ids} /> */}
+        <div className="class-details-nav">
+          <NavLink to={`${url}/about`} className="class-details-about">
+            About
+          </NavLink>
+          <NavLink to={`${url}/decks`} className="class-details-nav-item">
+            Decks
+          </NavLink>
+        </div>
+        <Switch>
+          <Route path="/dashboard/:classId/decks">
+            <DeckList deckIds={curClass.deck_ids} />
+          </Route>
+        </Switch>
       </div>
     )
   );

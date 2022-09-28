@@ -11,12 +11,12 @@ function Dashboard() {
       <Sidebar />
       <div className="dashboard-content">
         <Switch>
-          <ProtectedRoute path="/dashboard/:classId" exact={true}>
+          <ProtectedRoute path="/dashboard/:classId">
             <ClassDetails />
           </ProtectedRoute>
-          <ProtectedRoute path="/dashboard/:classId/decks/:deckId" exact={true}>
+          {/* <ProtectedRoute path="/dashboard/:classId/decks/:deckId" exact={true}>
             <DeckDetails />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
         </Switch>
       </div>
     </div>
