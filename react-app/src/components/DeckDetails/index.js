@@ -15,7 +15,7 @@ function DeckDetails() {
   const handleDelete = async (e) => {
     e.preventDefault();
     const res = await dispatch(deleteDeckById(deckId));
-    history.push(`/classes/${classId}`);
+    history.push(`/dashboard/${classId}`);
   };
 
   if (!deck) return null;

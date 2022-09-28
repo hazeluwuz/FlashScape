@@ -9,7 +9,7 @@ const NavBar = () => {
     <div className="nav-container">
       <div className="logo-container">
         <div className="nav-logo">
-          <NavLink to="/" exact={true} activeClassName="active" />
+          <NavLink className='nav-logo' to="/" exact={true} activeClassName="active" />
         </div>
       </div>
       <div className="nav-links">

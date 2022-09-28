@@ -27,7 +27,7 @@ function ClassList() {
           {classes.map((c) => (
             <li key={c.id}>
               <div>
-                <Link to={`/classes/${c.id}`}>{c.name}</Link>
+                <Link to={`/dashboard/${c.id}`}>{c.name}</Link>
                 <button onClick={(e) => handleDelete(e, c.id)}>Delete</button>
               </div>
             </li>

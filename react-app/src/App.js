@@ -14,6 +14,7 @@ import ClassList from "./components/ClassList";
 import ClassDetails from "./components/ClassDetails";
 import DeckDetails from "./components/DeckDetails";
 import SplashPage from "./components/SplashPage";
+import LogoutButton from "./components/auth/LogoutButton";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
@@ -48,19 +49,19 @@ function App() {
           <User />
         </ProtectedRoute>
         {/* BACKEND TESTING ROUTES */}
-        <ProtectedRoute path="/classes" exact={true}>
-          <h1>TEMPORARY CLASS LIST</h1>
-          <ClassList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/classes/:classId" exact={true}>
+        <ProtectedRoute path="/dashboard/:classId" exact={true}>
           <ClassDetails />
         </ProtectedRoute>
-        <ProtectedRoute path="/classes/:classId/decks/:deckId" exact={true}>
+        <ProtectedRoute path="/dashboard/:classId/decks/:deckId" exact={true}>
           <DeckDetails />
         </ProtectedRoute>
-        <Route path="/">
+        <Route path="/" exact>
           <SplashPage />
         </Route>
+        <ProtectedRoute path="/dashboard">
+          <ClassList />
+          <LogoutButton />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

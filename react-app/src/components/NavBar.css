@@ -14,7 +14,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   height: 45px;
-  /* text-indent: -10000px; */
+  cursor: pointer;
   width: 143px;
 }
 .logo-container {

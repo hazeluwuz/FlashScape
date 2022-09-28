@@ -1,5 +1,14 @@
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./SplashPage.css";
 function SplashPage() {
+  const user = useSelector((state) => state.session.user);
+  const history = useHistory();
+
+  if (user) {
+    history.push("/dashboard");
+  }
+
   return (
     <div className="main-splash-container">
       <div className="carousel-overlay"></div>

@@ -15,7 +15,7 @@ function DeckList({ deckIds }) {
           {decks[id] && (
             // TODO: fix this lol
             // inefficient but will change later
-            <Link to={`/classes/${decks[id].class_id}/decks/${id}`}>
+            <Link to={`/dashboard/${decks[id].class_id}/decks/${id}`}>
               {decks[id].name}
             </Link>
           )}
