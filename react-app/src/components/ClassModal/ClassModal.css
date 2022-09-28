@@ -1,0 +1,32 @@
+.class-modal-button {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.class-button {
+  display: flex;
+  flex-direction: column;
+  height: 36px;
+  justify-content: center;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.class-button:hover {
+  color: #29a5dc;
+}
+
+.class-edit-button {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding-left: 5px;
+  width: 100%;
+  font-size: 20px;
+  color: rgba(124, 130, 142, 0.6);
+}

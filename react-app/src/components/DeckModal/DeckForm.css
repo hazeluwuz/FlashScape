@@ -1,0 +1,14 @@
+.deck-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.deck-submit-button {
+  background-color: #ff8243;
+  font-size: 12px;
+  height: 48px;
+  width: 150px;
+  border: none;
+}
