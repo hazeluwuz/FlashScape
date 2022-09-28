@@ -8,6 +8,9 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import SplashPage from "./components/SplashPage";
 import Dashboard from "./components/Dashboard";
+import { getAllCards } from "./store/card";
+import { getAllClasses } from "./store/class";
+import { getAllDecks } from "./store/deck";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
@@ -16,7 +19,9 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-
+      await dispatch(getAllClasses());
+      await dispatch(getAllDecks());
+      await dispatch(getAllCards());
       setLoaded(true);
     })();
   }, [dispatch]);
