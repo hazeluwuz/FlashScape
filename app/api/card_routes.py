@@ -7,7 +7,6 @@ from .auth_routes import validation_errors_to_error_messages
 card_routes = Blueprint("cards", __name__)
 
 @card_routes.route("/")
-@login_required
 def cards():
     cards = Card.query.all()
     return {card.id: card.to_dict() for card in cards}
