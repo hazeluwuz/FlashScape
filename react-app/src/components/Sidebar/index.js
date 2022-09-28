@@ -45,8 +45,12 @@ function Sidebar() {
               {user.first_name} {user.last_name}
             </div>
           </div>
-          <div className="user-cog" onClick={openMenu}>
-            <i class="fa-solid fa-gear fa-xl"></i>
+          <div className={`user-cog`} onClick={openMenu}>
+            <i
+              class={`fa-solid fa-gear fa-xl ${
+                showMenu ? "user-menu-open" : ""
+              }`}
+            ></i>
             {showMenu && (
               <div className="profile-menu">
                 <div className="profile-dropdown">

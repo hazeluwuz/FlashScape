@@ -47,6 +47,7 @@
 
 .fa-gear {
   color: rgba(255, 255, 255, 0.4);
+  transition: rotate 0.3s ease-in-out;
 }
 
 .fa-gear:hover {
@@ -56,6 +57,10 @@
 .user-cog {
   position: relative;
   cursor: pointer;
+}
+
+.user-menu-open {
+  rotate: 45deg;
 }
 
 .user-picture-container {
@@ -85,6 +90,11 @@
   padding: 10px;
   position: absolute;
   top: 36px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-open {
+  opacity: 1;
 }
 
 .logout-button {
@@ -99,4 +109,12 @@
 .dropdown-item {
   display: flex;
   align-items: center;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
