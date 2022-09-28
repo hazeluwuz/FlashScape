@@ -7,11 +7,17 @@
   display: flex;
   position: relative;
   box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.55);
   border-left: 8px solid transparent;
   height: 72px;
   cursor: pointer;
   margin: 0;
   padding: 15px 0px 15px 40px;
+}
+
+.class-card-container:hover {
+  color: rgba(255, 255, 255, 0.9);
+  border-left: 8px solid rgba(255, 255, 255, 0.7);
 }
 
 .class-card-name {
@@ -34,5 +40,6 @@
 }
 
 .user-class-list-container > .active {
+  color: #ffffff;
   border-left: 8px solid #fff;
 }

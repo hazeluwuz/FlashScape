@@ -4,7 +4,9 @@ import {
   NavLink,
   Route,
   Switch,
+  useHistory,
   useRouteMatch,
+  useLocation,
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
@@ -14,16 +16,22 @@ import "./ClassDetails.css";
 import ClassModal from "../ClassModal";
 function ClassDetails() {
   const { classId } = useParams();
-  const { url } = useRouteMatch();
+  const { url, path } = useRouteMatch();
+  const curUrl = useLocation().pathname;
   const classes = useSelector((state) => state.classes);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
   const curClass = classes[classId];
   useEffect(() => {
     dispatch(getClassById(classId));
   }, [dispatch]);
 
   if (!curClass) return <Redirect to={`/dashboard`} />;
+  else if (curClass && curUrl === `/dashboard/${classId}`) {
+    console.log("redirecting: ", classId);
+    history.push(`/dashboard/${classId}/decks`);
+  }
 
   return (
     curClass && (
