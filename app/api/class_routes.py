@@ -9,7 +9,6 @@ class_routes = Blueprint("classes", __name__)
 
 # Get all Classes
 @class_routes.route("/")
-@login_required
 def classes():
     classes = Class.query.all()
     return {c.id: c.to_dict() for c in classes}
