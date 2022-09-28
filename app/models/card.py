@@ -4,8 +4,8 @@ class Card(db.Model):
   __tablename__ = "cards"
 
   id = db.Column(db.Integer, primary_key=True)
-  question = db.Column(db.String(100), nullable=False)
-  answer = db.Column(db.String(100), nullable=False)
+  question = db.Column(db.String(500), nullable=False)
+  answer = db.Column(db.String(500), nullable=False)
   # mastery will go here (eventually)
   deck_id = db.Column(db.Integer, db.ForeignKey("decks.id"), nullable=False)
 
