@@ -15,6 +15,7 @@ import ClassDetails from "./components/ClassDetails";
 import DeckDetails from "./components/DeckDetails";
 import SplashPage from "./components/SplashPage";
 import LogoutButton from "./components/auth/LogoutButton";
+import Dashboard from "./components/Dashboard";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
@@ -59,8 +60,7 @@ function App() {
           <SplashPage />
         </Route>
         <ProtectedRoute path="/dashboard">
-          <ClassList />
-          <LogoutButton />
+          <Dashboard />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllClasses, deleteClassById } from "../../store/class";
-import ClassForm from "../ClassForm";
+import "./ClassList.css";
 function ClassList() {
   const [isLoaded, setIsLoaded] = useState(false);
   const classes = useSelector((state) => Object.values(state.classes));
@@ -19,20 +19,15 @@ function ClassList() {
   };
   return (
     isLoaded && (
-      <div>
-        <div>
-          <ClassForm />
-        </div>
-        <ul>
-          {classes.map((c) => (
-            <li key={c.id}>
-              <div>
-                <Link to={`/dashboard/${c.id}`}>{c.name}</Link>
-                <button onClick={(e) => handleDelete(e, c.id)}>Delete</button>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <div className="user-class-list-container">
+        <h4 className="user-class-header">My Classes ({classes.length})</h4>
+
+        {classes.map((c) => (
+          <div>
+            <Link to={`/dashboard/${c.id}`}>{c.name}</Link>
+            <button onClick={(e) => handleDelete(e, c.id)}>Delete</button>
+          </div>
+        ))}
       </div>
     )
   );
