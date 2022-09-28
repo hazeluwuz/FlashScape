@@ -6,15 +6,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-import { getAllClasses } from "./store/class";
-import { getAllDecks } from "./store/deck";
-import { getAllCards } from "./store/card";
-import ClassList from "./components/ClassList";
-import ClassDetails from "./components/ClassDetails";
-import DeckDetails from "./components/DeckDetails";
 import SplashPage from "./components/SplashPage";
-import LogoutButton from "./components/auth/LogoutButton";
-import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -24,11 +16,6 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-
-      // Temporary to test backend/state
-      await dispatch(getAllClasses());
-      await dispatch(getAllDecks());
-      await dispatch(getAllCards());
 
       setLoaded(true);
     })();
@@ -41,7 +28,6 @@ function App() {
   return (
     <BrowserRouter>
       {!user && <NavBar />}
-      {/* Put Sidebar in Dashboard component */}
       <Switch>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
@@ -52,12 +38,6 @@ function App() {
         {/* BACKEND TESTING ROUTES */}
         <ProtectedRoute path="/dashboard">
           <Dashboard />
-        </ProtectedRoute>
-        <ProtectedRoute path="/dashboard/:classId" exact={true}>
-          <ClassDetails />
-        </ProtectedRoute>
-        <ProtectedRoute path="/dashboard/:classId/decks/:deckId" exact={true}>
-          <DeckDetails />
         </ProtectedRoute>
         <Route path="/" exact>
           <SplashPage />

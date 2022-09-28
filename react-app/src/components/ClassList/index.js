@@ -10,7 +10,10 @@ function ClassList() {
   const classes = useSelector((state) => Object.values(state.classes));
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCurrentUserClasses()).then(() => setIsLoaded(true));
+    (async () => {
+      await dispatch(getCurrentUserClasses());
+      setIsLoaded(true);
+    })();
   }, [dispatch]);
 
   return (

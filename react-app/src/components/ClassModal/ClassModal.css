@@ -15,6 +15,10 @@
   font-size: 20px;
 }
 
+.class-button:hover {
+  color: #29a5dc;
+}
+
 .class-edit-button {
   display: flex;
   height: 100%;
