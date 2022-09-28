@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllClasses, deleteClassById } from "../../store/class";
+import { getCurrentUserClasses, deleteClassById } from "../../store/class";
+import ClassCard from "../ClassCard";
+import ClassModal from "../ClassModal";
 import "./ClassList.css";
 function ClassList() {
   const [isLoaded, setIsLoaded] = useState(false);
   const classes = useSelector((state) => Object.values(state.classes));
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllClasses()).then(() => setIsLoaded(true));
+    dispatch(getCurrentUserClasses()).then(() => setIsLoaded(true));
   }, [dispatch]);
   const handleDelete = async (e, id) => {
     e.preventDefault();
@@ -20,13 +22,14 @@ function ClassList() {
   return (
     isLoaded && (
       <div className="user-class-list-container">
-        <h4 className="user-class-header">My Classes ({classes.length})</h4>
-
-        {classes.map((c) => (
+        <div className="user-class-container">
           <div>
-            <Link to={`/dashboard/${c.id}`}>{c.name}</Link>
-            <button onClick={(e) => handleDelete(e, c.id)}>Delete</button>
+            <h4 className="user-class-header">My Classes ({classes.length})</h4>
           </div>
+          <ClassModal />
+        </div>
+        {classes.map((c) => (
+          <ClassCard classData={c} />
         ))}
       </div>
     )

@@ -9,7 +9,6 @@ import { authenticate } from "./store/session";
 import { getAllClasses } from "./store/class";
 import { getAllDecks } from "./store/deck";
 import { getAllCards } from "./store/card";
-import ClassForm from "./components/ClassForm";
 import ClassList from "./components/ClassList";
 import ClassDetails from "./components/ClassDetails";
 import DeckDetails from "./components/DeckDetails";
