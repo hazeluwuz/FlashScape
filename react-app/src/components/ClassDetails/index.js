@@ -14,7 +14,9 @@ import { getClassById } from "../../store/class";
 import DeckList from "../DeckList";
 import "./ClassDetails.css";
 import ClassModal from "../ClassModal";
+import ClassEditForm from "../ClassEditForm";
 function ClassDetails() {
+  const [editing, setEditing] = useState(false);
   const { classId } = useParams();
   const { url, path } = useRouteMatch();
   const curUrl = useLocation().pathname;
@@ -46,8 +48,26 @@ function ClassDetails() {
           </div>
           <div className="class-details-info">
             <div className="class-details-name">
-              <div>{curClass.name}</div>
-              <ClassModal edit={true} />
+              {/* Brainscape Edit Style */}
+              {editing ? (
+                <ClassEditForm classData={curClass} setEditing={setEditing} />
+              ) : (
+                <div className="class-details-name-inner">
+                  <div className="class-name-container">{curClass.name}</div>
+                  <button
+                    className="class-detail-edit-button"
+                    onClick={() => setEditing(true)}
+                  >
+                    <i class="fa-solid fa-pencil class-edit-icon" />
+                  </button>
+                </div>
+              )}
+              {/* Brainscape Edit Style */}
+
+              {/* Modal Edit Style */}
+              {/* <div>{curClass.name}</div>
+              <ClassModal edit={true} /> */}
+              {/* Modal Edit Stlye */}
             </div>
             <div className="class-details-creator">
               Creator: {user.first_name} {user.last_name}

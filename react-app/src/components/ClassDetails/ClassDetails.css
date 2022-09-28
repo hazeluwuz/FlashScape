@@ -22,12 +22,8 @@
   font-size: 36px;
   font-weight: 550;
   margin: 0;
-  max-width: 50vw;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   height: 36px;
 }
 
@@ -91,4 +87,42 @@
 .class-details-nav > .active {
   border-bottom: 8px solid rgba(18, 57, 108, 0.36) !important;
   color: #46505e;
+}
+
+.class-detail-edit-button {
+  color: rgba(124, 130, 142, 0.6);
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+  height: 36px;
+  margin-left: 3px;
+  width: 36px;
+}
+.class-details-name-inner {
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.class-name-container {
+  max-width: 60vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.class-edit-icon {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+.class-detail-edit-button:hover {
+  color: #29a5dc;
+  background-color: rgba(0, 0, 0, 0.1);
 }

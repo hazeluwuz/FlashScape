@@ -21,6 +21,10 @@
 }
 
 .class-card-name {
+  width: 186px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   margin: 0;
   padding-left: 15px;
 }
