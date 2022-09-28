@@ -14,6 +14,7 @@ import ClassDetails from "./components/ClassDetails";
 import DeckDetails from "./components/DeckDetails";
 import SplashPage from "./components/SplashPage";
 import LogoutButton from "./components/auth/LogoutButton";
+import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,7 +41,7 @@ function App() {
   return (
     <BrowserRouter>
       {!user && <NavBar />}
-      {/* Render Sidebar here (for dashboard) */}
+      {/* Put Sidebar in Dashboard component */}
       <Switch>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
@@ -49,6 +50,9 @@ function App() {
           <User />
         </ProtectedRoute>
         {/* BACKEND TESTING ROUTES */}
+        <ProtectedRoute path="/dashboard">
+          <Dashboard />
+        </ProtectedRoute>
         <ProtectedRoute path="/dashboard/:classId" exact={true}>
           <ClassDetails />
         </ProtectedRoute>
@@ -58,9 +62,6 @@ function App() {
         <Route path="/" exact>
           <SplashPage />
         </Route>
-        <ProtectedRoute path="/dashboard">
-          <Dashboard />
-        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

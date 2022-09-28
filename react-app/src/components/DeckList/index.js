@@ -6,8 +6,8 @@ function DeckList({ deckIds }) {
   return (
     <div>
       <div>
-        <h1>Decks</h1>
-        <DeckForm />
+        <h1>Decks:</h1>
+        {/* <DeckForm /> */}
       </div>
       {deckIds.map((id) => (
         <div key={id}>

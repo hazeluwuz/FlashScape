@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { deleteClassById } from "../../store/class";
 import "./ClassCard.css";
 
 function ClassCard({ classData }) {
+  const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
   const handleDelete = async (e, id) => {
     e.preventDefault();
@@ -15,7 +17,12 @@ function ClassCard({ classData }) {
 
   return (
     classData && (
-      <Link className="class-card-container" to={`/dashboard/${classData.id}`}>
+      <NavLink
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}
+        className="class-card-container"
+        to={`/dashboard/${classData.id}`}
+      >
         <div className="class-card-icon-container">
           <img
             className="class-card-icon"
@@ -25,10 +32,12 @@ function ClassCard({ classData }) {
         <div>
           <h2 className="class-card-name">{classData.name}</h2>
         </div>
-        <div className="class-card-delete" onClick={handleDelete}>
-          <i class="fa-solid fa-x"></i>
-        </div>
-      </Link>
+        {isShown && (
+          <div className="class-card-delete" onClick={handleDelete}>
+            <i class="fa-solid fa-x"></i>
+          </div>
+        )}
+      </NavLink>
     )
   );
 }

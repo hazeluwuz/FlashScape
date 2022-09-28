@@ -16,7 +16,6 @@ function ClassDetails() {
     curClass && (
       <div className="class-details">
         <h1>{curClass.name}</h1>
-        <h2>Decks</h2>
         <DeckList deckIds={curClass.deck_ids} />
       </div>
     )
