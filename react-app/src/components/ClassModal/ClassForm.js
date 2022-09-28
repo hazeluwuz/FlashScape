@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createNewClass, updateClassById } from "../../store/class";
-
+import "./ClassForm.css";
 function ClassForm({ edit }) {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
@@ -31,15 +31,21 @@ function ClassForm({ edit }) {
   */
 
   return (
-    <form onSubmit={edit ? handleEdit : handleCreation}>
-      <label>Class Name:</label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <button type="submit">{edit ? "Edit Class" : "Create Class"}</button>
+    <form onSubmit={edit ? handleEdit : handleCreation} className="class-form">
+      <div className="input-container">
+        <input
+          type="text"
+          value={name}
+          placeholder=" "
+          className="text-input"
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <label>Class Name</label>
+      </div>
+      <button className="class-submit-button round-button" type="submit">
+        {edit ? "Edit Class" : "Create Class"}
+      </button>
     </form>
   );
 }
