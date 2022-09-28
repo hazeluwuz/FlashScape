@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createNewDeck, updateDeckById } from "../../store/deck";
-function DeckForm({ edit }) {
+import "./DeckForm.css";
+function DeckForm({ edit, closeModal }) {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   // very temporary will find better way in future lol
@@ -13,9 +14,8 @@ function DeckForm({ edit }) {
       class_id: classId,
       name,
     };
-    console.log("deckData", deckData);
     const temp = await dispatch(createNewDeck(deckData));
-    console.log(temp);
+    closeModal();
   };
 
   const handleEdit = async (e) => {
@@ -26,7 +26,7 @@ function DeckForm({ edit }) {
       name,
     };
     const temp = await dispatch(updateDeckById(deckData));
-    console.log(temp);
+    closeModal();
   };
 
   /*
@@ -35,15 +35,21 @@ function DeckForm({ edit }) {
   */
 
   return (
-    <form onSubmit={edit ? handleEdit : handleCreation}>
-      <label>Deck Name:</label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <button type="submit">{edit ? "Edit Deck" : "Create Deck"}</button>
+    <form className="deck-form" onSubmit={edit ? handleEdit : handleCreation}>
+      <div className="input-container">
+        <input
+          type="text"
+          className="text-input"
+          value={name}
+          placeholder=" "
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <label>Deck Name</label>
+      </div>
+      <button className="round-button deck-submit-button" type="submit">
+        {edit ? "Edit Deck" : "Create Deck"}
+      </button>
     </form>
   );
 }

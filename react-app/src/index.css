@@ -28,6 +28,8 @@ a {
 .round-button {
   color: #ffffff;
   cursor: pointer;
+  border-radius: 42px;
+  border: none;
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.12em;

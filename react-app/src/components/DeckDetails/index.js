@@ -2,7 +2,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { deleteDeckById } from "../../store/deck";
-import DeckForm from "../DeckForm";
+import DeckForm from "../DeckModal";
 import CardForm from "../CardForm";
 import CardList from "../CardList";
 function DeckDetails() {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllDecks } from "../../store/deck";
 import DeckCard from "../DeckCard";
-import DeckForm from "../DeckForm";
+import DeckForm from "../DeckModal";
 import "./DeckList.css";
 function DeckList({ deckIds }) {
   const [isLoaded, setIsLoaded] = useState(false);
