@@ -1,0 +1,32 @@
+.class-details-info-container {
+  display: flex;
+  padding: 36px;
+}
+
+.class-details-icon {
+  height: 130px;
+  width: 130px;
+}
+
+.class-details-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 36px;
+}
+
+.class-details-name {
+  color: #197096;
+  line-height: 1;
+  font-size: 36px;
+  font-weight: 550;
+  margin: 0;
+  max-width: 50vw;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 36px;
+}

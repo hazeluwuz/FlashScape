@@ -10,7 +10,11 @@ function ClassModal({ edit }) {
   return (
     <>
       <button className="class-modal-button" onClick={() => setShowModal(true)}>
-        <i class="fa-solid fa-plus class-button"></i>
+        {edit ? (
+          <i class="fa-solid fa-pencil class-edit-button"></i>
+        ) : (
+          <i class="fa-solid fa-plus class-button"></i>
+        )}
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
