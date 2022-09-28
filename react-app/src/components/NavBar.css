@@ -1,0 +1,54 @@
+.nav-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fafbfb;
+  align-items: center;
+  width: 100vw;
+  height: 4.5em;
+  z-index: 5;
+}
+.nav-logo {
+  background-image: url("https://www.brainscape.com/assets/cms/public-views/shared/Brainscape-logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 45px;
+  cursor: pointer;
+  width: 143px;
+}
+.logo-container {
+  padding-left: 4%;
+}
+.nav-links {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.login-container,
+.signup-container {
+  box-sizing: border-box;
+  width: 165px;
+}
+
+.login-button {
+  font-family: "Open Sans", sans-serif;
+  background-color: #fafbfb;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+}
+.signup-button {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: #ff8243;
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+}

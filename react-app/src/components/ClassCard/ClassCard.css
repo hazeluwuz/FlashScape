@@ -1,0 +1,49 @@
+.class-card-icon {
+  height: 40px;
+  width: 40px;
+}
+
+.class-card-container {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.55);
+  border-left: 8px solid transparent;
+  height: 72px;
+  cursor: pointer;
+  margin: 0;
+  padding: 15px 0px 15px 40px;
+}
+
+.class-card-container:hover {
+  color: rgba(255, 255, 255, 0.9);
+  border-left: 8px solid rgba(255, 255, 255, 0.7);
+}
+
+.class-card-name {
+  width: 186px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+  padding-left: 15px;
+}
+
+.class-card-delete {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 10px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  top: -1px;
+  width: 24px;
+}
+
+.class-card-delete:hover {
+  color: #3faee0;
+}
+
+.user-class-list-container > .active {
+  color: #ffffff;
+  border-left: 8px solid #fff;
+}

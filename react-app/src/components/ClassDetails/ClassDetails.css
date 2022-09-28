@@ -1,0 +1,128 @@
+.class-details-info-container {
+  display: flex;
+  padding: 36px;
+}
+
+.class-details-icon {
+  height: 130px;
+  width: 130px;
+}
+
+.class-details-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 36px;
+}
+
+.class-details-name {
+  color: #197096;
+  line-height: 1;
+  font-size: 36px;
+  font-weight: 550;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+
+.class-mastery-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 130px;
+  width: 130px;
+}
+
+.class-mastery-percent {
+  color: #2d3f55;
+  font-size: 28px;
+  font-weight: 300;
+  width: 100%;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
+}
+
+.class-mastery-percent-label {
+  color: #2d3f55;
+  font-size: 10px;
+  font-weight: 300;
+  width: 100%;
+  margin-top: 2px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.class-details-nav {
+  display: flex;
+  background-color: rgba(5, 101, 156, 0.08);
+  border-bottom: 1px solid rgba(46, 64, 86, 0.26);
+  height: 42px;
+  margin: 0;
+}
+
+.class-details-nav > a {
+  border-bottom: 8px solid transparent;
+  color: rgba(70, 80, 94, 0.8);
+  font-size: 14px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  flex: 1;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.class-details-nav > a:hover {
+  color: #29a5dc;
+  border-bottom: 8px solid rgba(18, 57, 108, 0.18);
+}
+
+.class-details-nav > .active {
+  border-bottom: 8px solid rgba(18, 57, 108, 0.36) !important;
+  color: #46505e;
+}
+
+.class-detail-edit-button {
+  color: rgba(124, 130, 142, 0.6);
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+  height: 36px;
+  margin-left: 3px;
+  width: 36px;
+}
+.class-details-name-inner {
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.class-name-container {
+  max-width: 60vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.class-edit-icon {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+.class-detail-edit-button:hover {
+  color: #29a5dc;
+  background-color: rgba(0, 0, 0, 0.1);
+}

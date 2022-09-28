@@ -1,0 +1,7 @@
+.signup-modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 99vh;
+}

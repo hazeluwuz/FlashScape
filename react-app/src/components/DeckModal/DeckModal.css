@@ -1,0 +1,15 @@
+.deck-modal-button {
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  color: #7d93a4;
+}
+
+.deck-modal-button:hover {
+  background-color: #f2f2f2;
+  color: #29a5dc;
+}

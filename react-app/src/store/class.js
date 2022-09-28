@@ -9,6 +9,11 @@ const getClasses = (classes) => ({
   payload: classes,
 });
 
+const getUserClasses = (classes) => ({
+  type: GET_CLASSES,
+  payload: classes,
+});
+
 const createClass = (classData) => ({
   type: CREATE_CLASS,
   payload: classData,
@@ -34,6 +39,14 @@ export const getAllClasses = () => async (dispatch) => {
   if (response.ok) {
     const classes = await response.json();
     dispatch(getClasses(classes));
+  }
+};
+
+export const getCurrentUserClasses = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/classes/current`);
+  if (response.ok) {
+    const classes = await response.json();
+    dispatch(getUserClasses(classes));
   }
 };
 

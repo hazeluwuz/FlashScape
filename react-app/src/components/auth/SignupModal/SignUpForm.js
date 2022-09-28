@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { signUp } from "../../store/session";
-
-const SignUpForm = () => {
+import { signUp } from "../../../store/session";
+import "./SignupForm.css";
+const SignUpForm = ({ closeModal }) => {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,6 +20,7 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data);
       }
+      closeModal();
     }
   };
 
@@ -40,59 +41,75 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form onSubmit={onSignUp} className="signup-form">
+      <div className="input-container">
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>First Name</label>
+      <div className="input-container">
         <input
           type="text"
           name="firstName"
+          placeholder=" "
+          required
+          className="text-input"
           onChange={(e) => setFirstName(e.target.value)}
           value={firstName}
         ></input>
+        <label>First Name</label>
       </div>
-      <div>
-        <label>Last Name</label>
+      <div className="input-container">
         <input
           type="text"
+          className="text-input"
           name="lastName"
+          placeholder=" "
+          required
           onChange={(e) => setLastName(e.target.value)}
           value={lastName}
         ></input>
+        <label>Last Name</label>
       </div>
-      <div>
-        <label>Email</label>
+      <div className="input-container">
         <input
           type="text"
           name="email"
+          className="text-input"
+          placeholder=" "
+          required
           onChange={updateEmail}
           value={email}
         ></input>
+        <label>Email</label>
       </div>
-      <div>
-        <label>Password</label>
+      <div className="input-container">
         <input
           type="password"
           name="password"
+          placeholder=" "
+          required
+          className="text-input"
           onChange={updatePassword}
           value={password}
-        ></input>
+        ></input>{" "}
+        <label>Password</label>
       </div>
-      <div>
-        <label>Repeat Password</label>
+      <div className="input-container">
         <input
           type="password"
           name="repeat_password"
+          className="text-input"
           onChange={updateRepeatPassword}
           value={repeatPassword}
+          placeholder=" "
           required={true}
-        ></input>
+        ></input>{" "}
+        <label>Repeat Password</label>
       </div>
-      <button type="submit">Sign Up</button>
+      <button className="signup-modal-button round-button" type="submit">
+        Sign Up
+      </button>
     </form>
   );
 };

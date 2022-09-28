@@ -1,0 +1,20 @@
+.class-submit-button {
+  border: none;
+  border-radius: 42px;
+  box-sizing: border-box;
+  background-color: #ff8243;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 300;
+  height: 42px;
+  padding: 0 25.2px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.class-form {
+  display: flex;
+  padding-top: 20px;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,19 @@
+.deck-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 36px 42px 12px 42px;
+  border-bottom: 1px solid #cccccc;
+}
+.deck-list-title {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0 24px 0 0;
+  text-transform: uppercase;
+  width: 54px;
+}
+.deck-list-container {
+  display: flex;
+  flex-direction: column;
+}

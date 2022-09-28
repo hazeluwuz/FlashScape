@@ -1,0 +1,25 @@
+.deck-card-container {
+  align-items: center;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 24px 30px 24px 42px;
+  position: relative;
+  width: 100%;
+}
+
+.deck-card-container:hover {
+  background-color: #eef7ff;
+  cursor: pointer;
+}
+
+.deck-card-name {
+  color: #197096;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 18px 0 0;
+}
+.deck-card-container:hover .deck-card-name {
+  color: #29a5dc;
+}
