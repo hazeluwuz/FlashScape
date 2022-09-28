@@ -1,5 +1,5 @@
 import { Switch, useHistory, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProtectedRoute from "../auth/ProtectedRoute";
 import Sidebar from "../Sidebar";
 import ClassDetails from "../ClassDetails";
@@ -8,6 +8,7 @@ import "./Dashboard.css";
 
 function Dashboard() {
   const classes = useSelector((state) => Object.values(state.classes));
+  const dispatch = useDispatch();
   const history = useHistory();
   const curUrl = useLocation().pathname;
 

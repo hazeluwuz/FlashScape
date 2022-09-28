@@ -16,6 +16,7 @@ function CardForm({ edit, card }) {
       // mastery eventually
       answer,
     };
+    console.log(cardData);
     const res = await dispatch(createNewCard(cardData));
     console.log(res);
   };
