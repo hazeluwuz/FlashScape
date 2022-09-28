@@ -12,8 +12,10 @@ import { deleteDeckById } from "../../store/deck";
 import DeckForm from "../DeckModal";
 import CardForm from "../CardForm";
 import CardList from "../CardList";
+import DeckEditForm from "../DeckEditForm";
 import "./DeckDetails.css";
 function DeckDetails() {
+  const [editing, setEditing] = useState(false);
   const decks = useSelector((state) => state.decks);
   const classes = useSelector((state) => state.classes);
   const { classId, deckId } = useParams();
@@ -50,12 +52,21 @@ function DeckDetails() {
               <div className="deck-class-name">{curClass.name}</div>
             </Link>
             <div className="deck-details-info">
-              <div className="deck-details-name-container">
-                <div className="deck-details-name">{deck.name}</div>
-              </div>
-              <div className="deck-details-edit">
-                <i class="fa-solid fa-pencil" />
-              </div>
+              {editing ? (
+                <DeckEditForm deck={deck} setEditing={setEditing} />
+              ) : (
+                <>
+                  <div className="deck-details-name-container">
+                    <div className="deck-details-name">{deck.name}</div>
+                  </div>
+                  <div
+                    className="deck-details-edit"
+                    onClick={() => setEditing(true)}
+                  >
+                    <i class="fa-solid fa-pencil deck-details-edit-icon" />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
