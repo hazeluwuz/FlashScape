@@ -1,0 +1,58 @@
+.deck-edit-input {
+  border: 1px solid rgba(25, 112, 150, 0.3);
+  border-radius: 6px;
+  color: #545454;
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
+  padding: 12px 18px;
+  width: 72vw;
+  max-width: 72vw;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0 6px;
+}
+.deck-edit-cancel-icon {
+  font-size: 12px;
+}
+.deck-edit-actions {
+  align-items: center;
+  display: flex;
+  height: 36px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.deck-edit-form {
+  display: flex;
+  justify-content: space-between;
+  max-width: 72vw;
+  margin: -6px 0 -6px -8px;
+}
+.deck-edit-cancel {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: #7d93a4;
+  cursor: pointer;
+  display: flex;
+  font-size: 24px;
+  height: 36px;
+  justify-content: center;
+  position: relative;
+  width: 36px;
+}
+.deck-edit-cancel:hover {
+  color: #29a5dc;
+}
+.deck-edit-form-container {
+  position: relative;
+  width: 100%;
+}
+.deck-edit-save {
+  background-color: #29a5dc;
+  font-size: 12px;
+  height: 24px;
+  margin: 0 9px 0 0;
+  padding: 0 12px;
+}

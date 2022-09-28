@@ -35,10 +35,16 @@ function ClassEditForm({ classData, setEditing }) {
           onChange={(e) => setName(e.target.value)}
         />
         <div className="class-edit-actions">
-          <button className="class-edit-cancel" onClick={handleCancel}>
+          <button
+            type="button"
+            className="class-edit-cancel"
+            onClick={handleCancel}
+          >
             <i class="fa-solid fa-x class-edit-cancel-icon"></i>
           </button>
-          <button className="class-edit-save round-button">Save</button>
+          <button type="submit" className="class-edit-save round-button">
+            Save
+          </button>
         </div>
       </div>
     </form>
