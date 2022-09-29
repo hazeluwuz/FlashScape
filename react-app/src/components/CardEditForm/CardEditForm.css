@@ -104,11 +104,6 @@ textarea:focus {
   cursor: not-allowed;
 }
 
-.unsaved {
-  border-color: red;
-  border-width: 2px;
-}
-
 .card-edit-errors {
   position: absolute;
   bottom: 5px;

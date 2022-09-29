@@ -26,7 +26,9 @@ function CardEditForm({ card, idx }) {
       answer,
     };
     const res = await dispatch(updateCardById(cardData));
-    document.activeElement.blur();
+    if (e.target.classList.contains("fa-save")) {
+      document.activeElement.blur();
+    }
   };
 
   const handleDelete = async (e) => {
