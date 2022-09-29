@@ -25,25 +25,16 @@ function CardEditForm({ card, idx }) {
   };
 
   return (
-    <div className={`card-edit-container ${inFocus ? "focused" : ""}`}>
+    <div className={`card-edit-container`}>
       <div className={`card-number ${inFocus ? "focused" : ""}`}>{idx + 1}</div>
       <form onSubmit={handleEdit} className="card-edit-form">
-        <div className="card-edit-form-container">
+        <div
+          className={`card-edit-form-container  ${inFocus ? "focused" : ""}`}
+        >
           <div className="card-edit-input-outer border-right">
             <div className="card-edit-input-container">
               <div className="card-edit-label">Q</div>
               <div className="card-edit-textarea-container">
-                {/* <textarea
-                  type="text"
-                  value={question}
-                  onBlur={handleEdit}
-                  onFocus={() => setInFocus(true)}
-                  onKeyUp={(e) => scaleTextArea(e.target)}
-                  placeholder=" "
-                  className="card-edit-input card-left-input"
-                  onChange={(e) => setQuestion(e.target.value)}
-                  required
-                /> */}
                 <TextareaAutosize
                   type="text"
                   value={question}
@@ -61,16 +52,6 @@ function CardEditForm({ card, idx }) {
             <div className="card-edit-input-container">
               <div className="card-edit-label">A</div>
               <div className="card-edit-textarea-container">
-                {/* <textarea
-                  type="text"
-                  className="card-edit-input"
-                  value={answer}
-                  onBlur={handleEdit}
-                  onFocus={() => setInFocus(true)}
-                  placeholder=" "
-                  onChange={(e) => setAnswer(e.target.value)}
-                  required
-                /> */}
                 <TextareaAutosize
                   type="text"
                   className="card-edit-input"
@@ -86,6 +67,7 @@ function CardEditForm({ card, idx }) {
           </div>
         </div>
       </form>
+      {/* CreateCardModal goes here */}
     </div>
   );
 }

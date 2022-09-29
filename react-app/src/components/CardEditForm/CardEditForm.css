@@ -12,6 +12,12 @@
   width: 100%;
   position: relative;
 }
+
+.card-edit-form-container.focused {
+  border: 1px solid #c0cad1;
+  box-shadow: -1px 1px 6px #d5e1e9;
+}
+
 .card-edit-form {
   display: flex;
   align-items: center;
@@ -70,7 +76,12 @@
   text-align: center;
   width: 60px;
 }
-.focused {
+.card-number.focused {
   color: #197096;
   font-weight: 600;
+}
+
+textarea:focus {
+  color: #197096;
+  outline: none;
 }
