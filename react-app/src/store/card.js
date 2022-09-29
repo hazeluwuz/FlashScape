@@ -77,7 +77,6 @@ export const deleteCardById = (cardId) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    console.log("DELETED_CARD:", data);
     dispatch(deleteCard(cardId));
     dispatch(removeCardFromDeck(cardId, data.deck_id));
   }

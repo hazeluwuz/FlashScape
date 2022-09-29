@@ -17,9 +17,7 @@ function CardForm({ edit, card }) {
       // mastery eventually
       answer,
     };
-    console.log(cardData);
     const res = await dispatch(createNewCard(cardData));
-    console.log(res);
   };
 
   const handleEdit = async (e) => {
@@ -32,7 +30,6 @@ function CardForm({ edit, card }) {
       answer,
     };
     const res = await dispatch(updateCardById(cardData));
-    console.log(res);
   };
   return (
     <form onSubmit={edit ? handleEdit : handleCreate} className="card-form">

@@ -18,7 +18,7 @@ import ClassEditForm from "../ClassEditForm";
 function ClassDetails() {
   const [editing, setEditing] = useState(false);
   const { classId } = useParams();
-  const { url, path } = useRouteMatch();
+  const { url } = useRouteMatch();
   const curUrl = useLocation().pathname;
   const classes = useSelector((state) => state.classes);
   const user = useSelector((state) => state.session.user);
@@ -31,7 +31,6 @@ function ClassDetails() {
 
   if (!curClass) return <Redirect to={`/dashboard`} />;
   else if (curClass && curUrl === `/dashboard/${classId}`) {
-    console.log("redirecting: ", classId);
     history.push(`/dashboard/${classId}/decks`);
   }
 
