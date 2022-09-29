@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateClassById } from "../../store/class";
 import "./ClassEditForm.css";
 
 function ClassEditForm({ classData, setEditing }) {
   const [name, setName] = useState(classData.name);
-
+  const [errors, setErrors] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsSubmitted(true);
+    if (errors.length) return;
     const payload = {
       id: classData.id,
       name,
@@ -24,6 +26,15 @@ function ClassEditForm({ classData, setEditing }) {
     e.preventDefault();
     setEditing(false);
   };
+
+  useEffect(() => {
+    const errors = [];
+    if (name.length < 5)
+      errors.push("name: Name must be at least 5 characters long");
+    if (name.length > 50)
+      errors.push("name: Name must be less than 50 characters");
+    setErrors(errors);
+  }, [name]);
 
   return (
     <form onSubmit={handleSubmit} className="class-edit-form">
@@ -45,6 +56,9 @@ function ClassEditForm({ classData, setEditing }) {
           <button type="submit" className="class-edit-save round-button">
             Save
           </button>
+        </div>
+        <div className="display-errors class-edit-errors">
+          {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
         </div>
       </div>
     </form>
