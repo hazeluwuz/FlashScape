@@ -1,4 +1,4 @@
-.class-submit-button {
+.card-submit-button {
   border: none;
   border-radius: 42px;
   box-sizing: border-box;
@@ -10,9 +10,10 @@
   padding: 0 25.2px;
   text-transform: uppercase;
   transition: all 0.3s;
+  margin-bottom: 15px;
 }
 
-.class-form {
+.card-form {
   display: flex;
   padding-top: 20px;
   flex-direction: column;

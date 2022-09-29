@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { createNewCard, updateCardById } from "../../store/card";
 import "./CreateCardForm.css";
 function CreateCardForm({ closeModal }) {
+  const [errors, setErrors] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const { deckId } = useParams();
@@ -11,6 +13,8 @@ function CreateCardForm({ closeModal }) {
 
   const handleCreate = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
+    if (errors.length) return;
     const cardData = {
       deck_id: deckId,
       question,
@@ -20,6 +24,19 @@ function CreateCardForm({ closeModal }) {
     const res = await dispatch(createNewCard(cardData));
     closeModal();
   };
+
+  useEffect(() => {
+    const errors = [];
+    if (question.length < 5)
+      errors.push("question: Question must be at least 5 characters long");
+    if (question.length > 500)
+      errors.push("question: Question must be less than 500 characters");
+    if (answer.length < 5)
+      errors.push("answer: Answer must be at least 5 characters long");
+    if (answer.length > 500)
+      errors.push("answer: Answer must be less than 500 characters");
+    setErrors(errors);
+  }, [question, answer]);
 
   return (
     <form onSubmit={handleCreate} className="card-form">
@@ -49,6 +66,9 @@ function CreateCardForm({ closeModal }) {
         <button type="submit" className="round-button card-submit-button">
           Create Card
         </button>
+      </div>
+      <div className="display-errors ">
+        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
       </div>
     </form>
   );
