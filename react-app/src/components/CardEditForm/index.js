@@ -67,7 +67,6 @@ function CardEditForm({ card, idx }) {
           </div>
         </div>
       </form>
-      {/* CreateCardModal goes here */}
     </div>
   );
 }

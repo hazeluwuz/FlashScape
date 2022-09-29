@@ -71,9 +71,6 @@ function DeckDetails() {
           </div>
         </div>
         <div className="deck-details-nav">
-          <NavLink to={`/dashboard/${classId}/decks/${deck.id}/preview`}>
-            Preview Cards
-          </NavLink>
           <NavLink to={`/dashboard/${classId}/decks/${deck.id}/edit`}>
             Edit Cards
           </NavLink>
@@ -82,17 +79,12 @@ function DeckDetails() {
           </NavLink>
         </div>
         <Switch>
-          <Route path={`/dashboard/:classId/decks/:deckId/preview`}>
-            {/* Card Preview */}
-            <CardList card_ids={deck.card_ids} preview={true} />
-          </Route>
           <Route path={`/dashboard/:classId/decks/:deckId/edit`}>
             {/* Card Edit/Create */}
             <CardList card_ids={deck.card_ids} />
           </Route>
           <Route path={`/dashboard/:classId/decks/:deckId/browse`}>
             {/* "Study" / Browse */}
-            {/* <CardList /> */}
           </Route>
         </Switch>
       </div>
