@@ -21,7 +21,7 @@
 .card-edit-form {
   display: flex;
   align-items: center;
-  margin-right: 72px;
+  margin-right: 20px;
   width: 100%;
 }
 .card-edit-input-container {
@@ -84,4 +84,16 @@
 textarea:focus {
   color: #197096;
   outline: none;
+}
+
+.card-edit-actions {
+  width: 30px;
+  margin-right: 20px;
+}
+
+.card-edit-action-button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 2px;
 }

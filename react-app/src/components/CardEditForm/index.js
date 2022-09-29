@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { createNewCard, updateCardById } from "../../store/card";
+import { updateCardById, deleteCardById } from "../../store/card";
 import TextareaAutosize from "react-textarea-autosize";
 import "./CardEditForm.css";
 function CardEditForm({ card, idx }) {
@@ -12,8 +12,8 @@ function CardEditForm({ card, idx }) {
   const dispatch = useDispatch();
 
   const handleEdit = async (e) => {
-    e.preventDefault();
     setInFocus(false);
+    e.preventDefault();
     const cardData = {
       id: card.id,
       deck_id: deckId,
@@ -22,6 +22,19 @@ function CardEditForm({ card, idx }) {
       answer,
     };
     const res = await dispatch(updateCardById(cardData));
+    document.activeElement.blur();
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    const res = await dispatch(deleteCardById(card.id));
+    document.activeElement.blur();
+  };
+
+  const clearFocus = (e) => {
+    setQuestion(card?.question || "");
+    setAnswer(card?.answer || "");
+    setInFocus(false);
   };
 
   return (
@@ -38,7 +51,7 @@ function CardEditForm({ card, idx }) {
                 <TextareaAutosize
                   type="text"
                   value={question}
-                  onBlur={handleEdit}
+                  onBlur={clearFocus}
                   onFocus={() => setInFocus(true)}
                   placeholder=" "
                   className="card-edit-input card-left-input"
@@ -56,7 +69,7 @@ function CardEditForm({ card, idx }) {
                   type="text"
                   className="card-edit-input"
                   value={answer}
-                  onBlur={handleEdit}
+                  onBlur={clearFocus}
                   onFocus={() => setInFocus(true)}
                   placeholder=" "
                   onChange={(e) => setAnswer(e.target.value)}
@@ -67,6 +80,26 @@ function CardEditForm({ card, idx }) {
           </div>
         </div>
       </form>
+      <div className="card-edit-actions">
+        {inFocus && (
+          <>
+            <button
+              className="card-edit-action-button"
+              onMouseDown={handleEdit}
+              type="submit"
+            >
+              <i className="fas fa-save"></i>
+            </button>
+            <button
+              className="card-edit-action-button"
+              onMouseDown={handleDelete}
+              type="button"
+            >
+              <i className="fas fa-trash"></i>
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
