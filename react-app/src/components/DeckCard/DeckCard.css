@@ -17,9 +17,35 @@
 .deck-card-name {
   color: #197096;
   font-size: 18px;
+  height: 36px;
+  line-height: 36px;
   font-weight: 600;
   margin: 0 18px 0 0;
 }
 .deck-card-container:hover .deck-card-name {
+  color: #29a5dc;
+}
+
+.deck-card-inner-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.deck-delete-button {
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  color: #7d93a4;
+  margin-right: 11px;
+}
+
+.deck-delete-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
   color: #29a5dc;
 }
