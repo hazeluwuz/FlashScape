@@ -10,6 +10,11 @@ const LoginForm = ({ closeModal }) => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
+  const demoLogin = () => {
+    setEmail("demo@aa.io");
+    setPassword("password");
+  };
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -64,6 +69,9 @@ const LoginForm = ({ closeModal }) => {
       </div>
       <button className="login-modal-button round-button" type="submit">
         Log in
+      </button>
+      <button className="login-modal-button round-button" onClick={demoLogin}>
+        Demo User
       </button>
     </form>
   );
