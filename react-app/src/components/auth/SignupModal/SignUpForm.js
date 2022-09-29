@@ -64,7 +64,7 @@ const SignUpForm = ({ closeModal }) => {
       errors.push("repeatPassword: Passwords must match");
     }
     setErrors(errors);
-  }, [firstName, lastName, email, password, repeatPassword]);
+  }, [firstName, lastName, password, repeatPassword]);
 
   if (user) {
     return <Redirect to="/" />;
@@ -98,7 +98,7 @@ const SignUpForm = ({ closeModal }) => {
       </div>
       <div className="input-container">
         <input
-          type="text"
+          type="email"
           name="email"
           className="text-input"
           placeholder=" "
