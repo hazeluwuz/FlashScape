@@ -70,6 +70,11 @@ export const createNewClass = (classData) => async (dispatch) => {
     const newClassData = await response.json();
     dispatch(createClass(newClassData));
     return newClassData;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
   }
 };
 

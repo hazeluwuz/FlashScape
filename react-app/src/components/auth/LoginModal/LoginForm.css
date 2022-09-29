@@ -26,5 +26,6 @@
   font-size: 12px;
   height: 5px;
   font-style: italic;
+  align-self: flex-start;
   text-align: left;
 }
