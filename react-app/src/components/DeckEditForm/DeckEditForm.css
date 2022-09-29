@@ -25,9 +25,14 @@
 }
 .deck-edit-form {
   display: flex;
-  justify-content: space-between;
+  position: relative;
   max-width: 72vw;
   margin: -6px 0 -6px -8px;
+}
+.deck-edit-errors {
+  position: absolute;
+  top: 34px;
+  left: 5px;
 }
 .deck-edit-cancel {
   align-items: center;

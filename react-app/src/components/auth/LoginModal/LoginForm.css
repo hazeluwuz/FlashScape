@@ -20,3 +20,13 @@
   height: 48px;
   margin-bottom: 15px;
 }
+
+.display-errors {
+  color: #cc0000;
+  font-size: 12px;
+  height: 5px;
+  font-style: italic;
+  font-weight: 500;
+  align-self: flex-start;
+  text-align: left;
+}

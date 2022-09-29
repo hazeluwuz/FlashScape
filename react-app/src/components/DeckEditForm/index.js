@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateDeckById } from "../../store/deck";
 import "./DeckEditForm.css";
 
 function DeckEditForm({ deck, setEditing }) {
+  const [errors, setErrors] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [name, setName] = useState(deck.name);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
+    if (errors.length) return;
     const payload = {
       id: deck.id,
       class_id: deck.class_id,
@@ -22,6 +26,15 @@ function DeckEditForm({ deck, setEditing }) {
     e.preventDefault();
     setEditing(false);
   };
+
+  useEffect(() => {
+    const errors = [];
+    if (name.length < 5)
+      errors.push("name: Name must be at least 5 characters long");
+    if (name.length > 50)
+      errors.push("name: Name must be less than 50 characters");
+    setErrors(errors);
+  }, [name]);
 
   return (
     <form onSubmit={handleSubmit} className="deck-edit-form">
@@ -44,6 +57,9 @@ function DeckEditForm({ deck, setEditing }) {
             Save
           </button>
         </div>
+      </div>
+      <div className="display-errors deck-edit-errors">
+        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
       </div>
     </form>
   );

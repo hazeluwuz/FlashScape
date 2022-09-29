@@ -12,6 +12,12 @@
   padding: 0 6px;
 }
 
+.class-edit-errors {
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+}
+
 .class-edit-form {
   display: flex;
   justify-content: space-between;

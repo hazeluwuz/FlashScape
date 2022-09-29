@@ -21,11 +21,12 @@
 .card-edit-form {
   display: flex;
   align-items: center;
-  margin-right: 72px;
+  margin-right: 20px;
   width: 100%;
 }
 .card-edit-input-container {
   display: flex;
+  position: relative;
   align-items: center;
   width: 100%;
   padding: 12px 24px;
@@ -66,6 +67,7 @@
 .card-edit-container {
   display: flex;
   align-items: center;
+  position: relative;
   padding-left: 9px;
 }
 .card-number {
@@ -84,4 +86,26 @@
 textarea:focus {
   color: #197096;
   outline: none;
+}
+
+.card-edit-actions {
+  width: 30px;
+  margin-right: 20px;
+}
+
+.card-edit-action-button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 2px;
+}
+
+.card-edit-action-button:disabled {
+  cursor: not-allowed;
+}
+
+.card-edit-errors {
+  position: absolute;
+  bottom: 5px;
+  left: 89px;
 }

@@ -35,11 +35,13 @@
 }
 
 .splash-header {
+  display: flex;
   color: #ffffff;
   font-family: "Mont Bold", Mont, sans-serif !important;
   font-weight: 700 !important;
   margin: 0;
-  font-size: 135px;
+  line-height: 1;
+  font-size: calc(64px + 40 * (100vw) / 1000);
   white-space: pre-line !important;
 }
 .splash-subheader {
