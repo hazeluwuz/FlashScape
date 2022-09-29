@@ -84,11 +84,11 @@ function DeckDetails() {
         <Switch>
           <Route path={`/dashboard/:classId/decks/:deckId/preview`}>
             {/* Card Preview */}
-            <CardList card_ids={deck.card_ids} />
+            <CardList card_ids={deck.card_ids} preview={true} />
           </Route>
           <Route path={`/dashboard/:classId/decks/:deckId/edit`}>
             {/* Card Edit/Create */}
-            <CardForm />
+            <CardList card_ids={deck.card_ids} />
           </Route>
           <Route path={`/dashboard/:classId/decks/:deckId/browse`}>
             {/* "Study" / Browse */}
