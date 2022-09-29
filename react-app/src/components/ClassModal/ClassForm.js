@@ -3,34 +3,44 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewClass, updateClassById } from "../../store/class";
 import "./ClassForm.css";
-function ClassForm({ edit, closeModal }) {
+function ClassForm({ closeModal }) {
   const classes = useSelector((state) => state.classes);
   const { classId } = useParams();
+  const [errors, setErrors] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const curClass = classes[classId];
   const dispatch = useDispatch();
   const [name, setName] = useState(curClass?.name || "");
 
   const handleCreation = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
+    if (errors.length) return null;
     const classData = {
       name,
     };
-    const temp = await dispatch(createNewClass(classData));
-    closeModal();
+    const data = await dispatch(createNewClass(classData));
+    if (data && data.errors) {
+      setErrors(Object.values(data.errors));
+    } else {
+      closeModal();
+    }
   };
 
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    const classData = {
-      id: classId,
-      name,
-    };
-    const temp = await dispatch(updateClassById(classData));
-    closeModal();
-  };
+  useEffect(() => {
+    const errors = [];
+
+    if (name.length < 5) {
+      errors.push("name: Name must be at least 5 characters long");
+    }
+    if (name.length > 50) {
+      errors.push("name: Name must be less than 50 characters long");
+    }
+    setErrors(errors);
+  }, [name]);
 
   return (
-    <form onSubmit={edit ? handleEdit : handleCreation} className="class-form">
+    <form onSubmit={handleCreation} className="class-form">
       <div className="input-container">
         <input
           type="text"
@@ -43,8 +53,11 @@ function ClassForm({ edit, closeModal }) {
         <label>Class Name</label>
       </div>
       <button className="class-submit-button round-button" type="submit">
-        {edit ? "Edit Class" : "Create Class"}
+        Create Class
       </button>
+      <div className="display-errors">
+        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
+      </div>
     </form>
   );
 }

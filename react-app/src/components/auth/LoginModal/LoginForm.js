@@ -10,13 +10,20 @@ const LoginForm = ({ closeModal }) => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
+  const demoLogin = () => {
+    setEmail("demo@aa.io");
+    setPassword("password");
+  };
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      console.log(data);
+      setErrors(data.errors);
+    } else {
+      closeModal();
     }
-    closeModal();
   };
 
   const updateEmail = (e) => {
@@ -33,11 +40,6 @@ const LoginForm = ({ closeModal }) => {
 
   return (
     <form onSubmit={onLogin} className="login-form">
-      <div className="input-container">
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
       <div className="input-container">
         <input
           name="email"
@@ -65,6 +67,12 @@ const LoginForm = ({ closeModal }) => {
       <button className="login-modal-button round-button" type="submit">
         Log in
       </button>
+      <button className="login-modal-button round-button" onClick={demoLogin}>
+        Demo User
+      </button>
+      <div className="display-errors">
+        {errors.length > 0 && Object.values(errors)[0].split(": ")[1]}
+      </div>
     </form>
   );
 };
