@@ -1,0 +1,25 @@
+.card-modal-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0;
+}
+.card-modal-button:hover * {
+  color: #ff8243 !important;
+}
+.card-modal-icon {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  height: 40px;
+  justify-content: center;
+  margin: 0 3px 0 0;
+  font-size: 24px;
+  color: #c0cad1;
+  width: 40px;
+}

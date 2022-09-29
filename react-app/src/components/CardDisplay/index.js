@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { deleteCardById } from "../../store/card";
+import CardEditForm from "../CardEditForm";
 import CardForm from "../CardForm";
 import "./CardDisplay.css";
 function CardDisplay({ card }) {
@@ -19,7 +20,6 @@ function CardDisplay({ card }) {
       <div>
         <h1>{card.answer}</h1>
       </div>
-      <CardForm edit={true} card={card} />
       <button onClick={handleDelete}>Delete</button>
     </div>
   );

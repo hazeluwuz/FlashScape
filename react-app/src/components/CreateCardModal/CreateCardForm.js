@@ -2,10 +2,10 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { createNewCard, updateCardById } from "../../store/card";
-import "./CardForm.css";
-function CardForm({ edit, card }) {
-  const [question, setQuestion] = useState(card?.question || "");
-  const [answer, setAnswer] = useState(card?.answer || "");
+import "./CreateCardForm.css";
+function CreateCardForm({ closeModal }) {
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
   const { deckId } = useParams();
   const dispatch = useDispatch();
 
@@ -18,21 +18,11 @@ function CardForm({ edit, card }) {
       answer,
     };
     const res = await dispatch(createNewCard(cardData));
+    closeModal();
   };
 
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    const cardData = {
-      id: card.id,
-      deck_id: deckId,
-      question,
-      // mastery eventually
-      answer,
-    };
-    const res = await dispatch(updateCardById(cardData));
-  };
   return (
-    <form onSubmit={edit ? handleEdit : handleCreate} className="card-form">
+    <form onSubmit={handleCreate} className="card-form">
       <div className="card-form-container">
         <div className="input-container">
           <input
@@ -57,10 +47,10 @@ function CardForm({ edit, card }) {
           <label>Answer</label>
         </div>
         <button type="submit" className="round-button card-submit-button">
-          {edit ? "Edit Card" : "Create Card"}
+          Create Card
         </button>
       </div>
     </form>
   );
 }
-export default CardForm;
+export default CreateCardForm;

@@ -1,0 +1,87 @@
+.card-edit-form-container {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: none;
+  display: flex;
+  font-family: "Open Sans", sans-serif;
+  margin: 15px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  position: relative;
+}
+
+.card-edit-form-container.focused {
+  border: 1px solid #c0cad1;
+  box-shadow: -1px 1px 6px #d5e1e9;
+}
+
+.card-edit-form {
+  display: flex;
+  align-items: center;
+  margin-right: 72px;
+  width: 100%;
+}
+.card-edit-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 24px;
+  padding-top: 15px;
+}
+.card-edit-input {
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  min-height: 33px;
+  width: 100%;
+  font-size: 16px;
+  height: 35px;
+  margin: 0;
+}
+.card-edit-label {
+  align-self: flex-start;
+  color: #dfdfdf;
+  height: 32px;
+  padding-right: 15px;
+}
+
+.card-edit-input-outer {
+  align-self: stretch;
+  width: 50%;
+}
+.border-right {
+  border-right: 6px solid #f1f1f1;
+}
+.card-edit-textarea-container {
+  color: #333;
+  font-size: 16px;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+.card-edit-container {
+  display: flex;
+  align-items: center;
+  padding-left: 9px;
+}
+.card-number {
+  color: #878787;
+  font-size: 21px;
+  font-weight: 100;
+  margin-right: 0;
+  text-align: center;
+  width: 60px;
+}
+.card-number.focused {
+  color: #197096;
+  font-weight: 600;
+}
+
+textarea:focus {
+  color: #197096;
+  outline: none;
+}
