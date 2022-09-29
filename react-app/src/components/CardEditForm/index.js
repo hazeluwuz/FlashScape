@@ -6,6 +6,8 @@ import TextareaAutosize from "react-textarea-autosize";
 import "./CardEditForm.css";
 function CardEditForm({ card, idx }) {
   const [inFocus, setInFocus] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [question, setQuestion] = useState(card?.question || "");
   const [answer, setAnswer] = useState(card?.answer || "");
   const { deckId } = useParams();
@@ -13,6 +15,8 @@ function CardEditForm({ card, idx }) {
 
   const handleEdit = async (e) => {
     setInFocus(false);
+    if (errors.length) return;
+    setIsSubmitted(true);
     e.preventDefault();
     const cardData = {
       id: card.id,
@@ -28,21 +32,34 @@ function CardEditForm({ card, idx }) {
   const handleDelete = async (e) => {
     e.preventDefault();
     const res = await dispatch(deleteCardById(card.id));
-    document.activeElement.blur();
   };
 
   const clearFocus = (e) => {
-    setQuestion(card?.question || "");
-    setAnswer(card?.answer || "");
     setInFocus(false);
   };
 
+  useEffect(() => {
+    const errors = [];
+    if (question.length < 5) {
+      errors.push("question: Question must be at least 5 characters long");
+    }
+    if (question.length > 50) {
+      errors.push("question: Question must be less than 50 characters long");
+    }
+    if (answer.length < 5) {
+      errors.push("answer: Answer must be at least 5 characters long");
+    }
+    if (answer.length > 500) {
+      errors.push("answer: Answer must be less than 500 characters long");
+    }
+    setErrors(errors);
+  }, [question, answer]);
   return (
     <div className={`card-edit-container`}>
       <div className={`card-number ${inFocus ? "focused" : ""}`}>{idx + 1}</div>
       <form onSubmit={handleEdit} className="card-edit-form">
         <div
-          className={`card-edit-form-container  ${inFocus ? "focused" : ""}`}
+          className={`card-edit-form-container ${inFocus ? "focused" : ""} `}
         >
           <div className="card-edit-input-outer border-right">
             <div className="card-edit-input-container">
@@ -51,10 +68,10 @@ function CardEditForm({ card, idx }) {
                 <TextareaAutosize
                   type="text"
                   value={question}
-                  onBlur={clearFocus}
+                  onBlur={handleEdit}
                   onFocus={() => setInFocus(true)}
                   placeholder=" "
-                  className="card-edit-input card-left-input"
+                  className={`card-edit-input card-left-input`}
                   onChange={(e) => setQuestion(e.target.value)}
                   required
                 />
@@ -69,7 +86,7 @@ function CardEditForm({ card, idx }) {
                   type="text"
                   className="card-edit-input"
                   value={answer}
-                  onBlur={clearFocus}
+                  onBlur={handleEdit}
                   onFocus={() => setInFocus(true)}
                   placeholder=" "
                   onChange={(e) => setAnswer(e.target.value)}
@@ -86,6 +103,7 @@ function CardEditForm({ card, idx }) {
             <button
               className="card-edit-action-button"
               onMouseDown={handleEdit}
+              disabled={errors.length}
               type="submit"
             >
               <i className="fas fa-save"></i>
@@ -99,6 +117,9 @@ function CardEditForm({ card, idx }) {
             </button>
           </>
         )}
+      </div>
+      <div className="display-errors card-edit-errors">
+        {errors.length > 0 && errors[0].split(": ")[1]}
       </div>
     </div>
   );

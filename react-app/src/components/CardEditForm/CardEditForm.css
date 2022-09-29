@@ -26,6 +26,7 @@
 }
 .card-edit-input-container {
   display: flex;
+  position: relative;
   align-items: center;
   width: 100%;
   padding: 12px 24px;
@@ -66,6 +67,7 @@
 .card-edit-container {
   display: flex;
   align-items: center;
+  position: relative;
   padding-left: 9px;
 }
 .card-number {
@@ -96,4 +98,19 @@ textarea:focus {
   cursor: pointer;
   background-color: transparent;
   padding: 2px;
+}
+
+.card-edit-action-button:disabled {
+  cursor: not-allowed;
+}
+
+.unsaved {
+  border-color: red;
+  border-width: 2px;
+}
+
+.card-edit-errors {
+  position: absolute;
+  bottom: 5px;
+  left: 89px;
 }
