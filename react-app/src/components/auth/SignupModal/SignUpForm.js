@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../../store/session";
 import "./SignupForm.css";
 const SignUpForm = ({ closeModal }) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -15,12 +16,15 @@ const SignUpForm = ({ closeModal }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    setIsSubmitted(true);
+    if (password === repeatPassword && !errors.length) {
       const data = await dispatch(signUp(firstName, lastName, email, password));
-      if (data) {
-        setErrors(data);
+      if (data && data.errors) {
+        console.log(data);
+        setErrors(Object.values(data.errors));
+      } else {
+        closeModal();
       }
-      closeModal();
     }
   };
 
@@ -36,17 +40,38 @@ const SignUpForm = ({ closeModal }) => {
     setRepeatPassword(e.target.value);
   };
 
+  useEffect(() => {
+    const errors = [];
+    if (firstName.length < 5) {
+      errors.push("firstName: First name must be at least 5 characters long");
+    }
+    if (firstName.length > 50) {
+      errors.push("firstName: First name must be less than 50 characters long");
+    }
+    if (lastName.length < 5) {
+      errors.push("lastName: Last name must be at least 5 characters long");
+    }
+    if (lastName.length > 50) {
+      errors.push("lastName: Last name must be less than 50 characters long");
+    }
+    if (password.length < 6) {
+      errors.push("password: Password must be at least 6 characters long");
+    }
+    if (password.length > 50) {
+      errors.push("password: Password must be less than 50 characters long");
+    }
+    if (password !== repeatPassword) {
+      errors.push("repeatPassword: Passwords must match");
+    }
+    setErrors(errors);
+  }, [firstName, lastName, email, password, repeatPassword]);
+
   if (user) {
     return <Redirect to="/" />;
   }
 
   return (
     <form onSubmit={onSignUp} className="signup-form">
-      <div className="input-container">
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
       <div className="input-container">
         <input
           type="text"
@@ -110,6 +135,9 @@ const SignUpForm = ({ closeModal }) => {
       <button className="signup-modal-button round-button" type="submit">
         Sign Up
       </button>
+      <div className="display-errors">
+        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
+      </div>
     </form>
   );
 };
