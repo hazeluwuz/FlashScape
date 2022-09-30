@@ -35,6 +35,7 @@ a {
   letter-spacing: 0.12em;
   text-align: center;
   text-transform: uppercase;
+  transition: all 0.3s;
 }
 
 .text-input {
@@ -84,4 +85,9 @@ input:valid ~ label {
 input:not(:placeholder-shown) ~ label {
   top: -12px;
   font-size: 12px;
+}
+
+button:disabled {
+  cursor: not-allowed !important;
+  background-color: #cecece;
 }
