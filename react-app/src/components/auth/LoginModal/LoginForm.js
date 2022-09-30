@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../../store/session";
 import "./LoginForm.css";
-const validator = require("email-validator");
 const LoginForm = ({ closeModal }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showErrors, setShowErrors] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -19,6 +19,7 @@ const LoginForm = ({ closeModal }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setErrors([]);
     const data = await dispatch(login(email, password));
     setShowErrors(true);
     if (data) {
@@ -38,12 +39,8 @@ const LoginForm = ({ closeModal }) => {
   };
 
   useEffect(() => {
-    const errors = [];
-    if (!email) errors.push("email: Email is required");
-    if (!validator.validate(email)) errors.push("email: Invalid Email");
-    if (!password) errors.push("password: Password is required");
-    if(password.length < 6) errors.push("password: Password must be at least 6 characters")
-    setErrors(errors);
+    if (!email || !password) setIsDisabled(true);
+    else setIsDisabled(false);
   }, [email, password]);
   if (user) {
     return <Redirect to="/" />;
@@ -54,7 +51,7 @@ const LoginForm = ({ closeModal }) => {
       <div className="input-container">
         <input
           name="email"
-          type="email"
+          type="text"
           className="text-input"
           placeholder=" "
           onInput={() => setShowErrors(true)}
@@ -80,7 +77,7 @@ const LoginForm = ({ closeModal }) => {
       <button
         className="login-modal-button round-button"
         type="submit"
-        disabled={errors.length}
+        disabled={isDisabled}
       >
         Log in
       </button>
