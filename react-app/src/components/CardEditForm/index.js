@@ -67,6 +67,7 @@ function CardEditForm({ card, idx }) {
                   type="text"
                   value={question}
                   onBlur={handleEdit}
+                  minLength="5"
                   onFocus={() => setInFocus(true)}
                   placeholder=" "
                   className={`card-edit-input card-left-input`}
@@ -96,7 +97,7 @@ function CardEditForm({ card, idx }) {
         </div>
       </form>
       <div className="card-edit-actions">
-        {inFocus && (
+        {inFocus && !errors.length && (
           <>
             <button
               className="card-edit-action-button"
@@ -114,6 +115,12 @@ function CardEditForm({ card, idx }) {
               <i className="fas fa-trash"></i>
             </button>
           </>
+        )}
+        {errors.length > 0 && (
+          <i
+            title="Card will not save unless errors are fixed"
+            class="fa-solid fa-circle-exclamation card-edit-warning"
+          ></i>
         )}
       </div>
       <div className="display-errors card-edit-errors">

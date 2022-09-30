@@ -100,12 +100,17 @@ textarea:focus {
   padding: 2px;
 }
 
-.card-edit-action-button:disabled {
-  cursor: not-allowed;
-}
-
 .card-edit-errors {
   position: absolute;
   bottom: 5px;
   left: 89px;
+}
+.card-edit-action-button:disabled {
+  cursor: not-allowed;
+  background-color: transparent !important;
+}
+
+.card-edit-warning {
+  color: #ff6700;
+  font-size: 28px;
 }
