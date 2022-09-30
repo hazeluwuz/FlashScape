@@ -6,9 +6,9 @@ def seed_classes():
     class1 = Class(
         name='Class 1', owner_id=1)
     class2 = Class(
-        name='Class 2', owner_id=2)
+        name='Class 2', owner_id=1)
     class3 = Class(
-        name='Class 3', owner_id=3)
+        name='Class 3', owner_id=1)
 
     db.session.add(class1)
     db.session.add(class2)

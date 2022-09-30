@@ -74,8 +74,9 @@
   box-shadow: 0 2px 4px rgba(100, 100, 100, 0.25);
   height: calc(100vh - 114px - 54px - 10vh - 24px);
   max-height: calc(calc(100vw - 340px - 144px) / 1.33333333);
-  max-width: calc(100vw - 340px - 144px);
   width: calc(calc(100vh - 114px - 54px - 10vh - 24px) * 1.33333333);
+  max-width: calc(100vw - 340px - 144px);
+  transition: width 0.5s ease;
 }
 
 .card-display-content {
@@ -88,7 +89,7 @@
   padding: 1em;
 }
 .card-display-text {
-  font-size: 37px;
+  font-size: 36px;
   color: #333;
   height: auto;
   min-height: 30px;
@@ -96,6 +97,10 @@
   width: 100%;
   text-align: center;
   word-wrap: break-word;
+  animation-duration: 400ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  animation-name: cardFade;
 }
 
 .card-display-button {
@@ -118,4 +123,14 @@
   position: absolute;
   top: 50px;
   font-weight: bold;
+}
+
+@keyframes cardFade {
+  0% {
+    scale: 0.5;
+  }
+  100% {
+    scale: 1;
+    transform: none;
+  }
 }
