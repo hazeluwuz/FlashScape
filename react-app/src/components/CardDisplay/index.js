@@ -1,26 +1,33 @@
-import { useDispatch } from "react-redux";
-import { deleteCardById } from "../../store/card";
-import CardEditForm from "../CardEditForm";
-import CardForm from "../CardForm";
+import { useState, useEffect } from "react";
 import "./CardDisplay.css";
-function CardDisplay({ card }) {
-  const dispatch = useDispatch();
-  const handleDelete = (e) => {
-    e.preventDefault();
-    dispatch(deleteCardById(card.id));
-  };
-
+function CardDisplay({ card, index, deck_length }) {
+  const [flipped, setFlipped] = useState(false);
+  useEffect(() => {
+    setFlipped(false);
+  }, [card]);
   if (!card) return null;
 
   return (
     <div className="card-display">
-      <div>
-        <h1>{card.question}</h1>
+      <div className="card-display-inner">
+        <div className="card-display-header">
+          <div>
+            Card {index + 1} of {deck_length}
+          </div>
+          <div className="card-display-label">{flipped ? "A" : "Q"}</div>
+        </div>
+        <div className="card-display-content">
+          <div className="card-display-text">
+            {flipped ? card.answer : card.question}
+          </div>
+        </div>
       </div>
-      <div>
-        <h1>{card.answer}</h1>
-      </div>
-      <button onClick={handleDelete}>Delete</button>
+      <button
+        className="card-display-button round-button"
+        onClick={() => setFlipped((prev) => !prev)}
+      >
+        {flipped ? "Show Question" : "Show Answer"}
+      </button>
     </div>
   );
 }

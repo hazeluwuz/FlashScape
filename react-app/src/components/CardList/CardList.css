@@ -1,7 +1,8 @@
 .card-list {
-  height: 100%;
+  height: calc(100vh - 114px);
   max-height: 100%;
   padding-left: 72px;
+  overflow-y: scroll;
 }
 .new-card-container {
   display: flex;

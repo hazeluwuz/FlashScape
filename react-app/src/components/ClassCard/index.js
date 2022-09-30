@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { deleteClassById } from "../../store/class";
 import "./ClassCard.css";
 
 function ClassCard({ classData }) {
   const [isShown, setIsShown] = useState(false);
+  const history = useHistory();
   const dispatch = useDispatch();
   const handleDelete = async (e, id) => {
     e.preventDefault();
     const res = await dispatch(deleteClassById(classData.id));
-    if (res && res.errors) {
-      alert(res.errors);
+    if (res.ok) {
+      history.push("/dashboard");
     }
   };
 

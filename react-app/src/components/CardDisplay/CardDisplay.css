@@ -1,4 +1,121 @@
 .card-display {
-  border: 2px solid red;
-  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  align-self: center;
+}
+
+.card-display-header {
+  background-color: #7d93a4;
+  color: #ffffff;
+  font-size: 14px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.card-display-container {
+  padding: 27px 30px;
+  position: relative;
+}
+
+.card-display-container-inner {
+  display: flex;
+  height: calc(100vh - 114px - 27px - 27px);
+}
+
+.prev-card-container,
+.next-card-container {
+  display: flex;
+  align-items: center;
+  width: 36px;
+}
+
+.prev-card-button,
+.next-card-button {
+  color: #9cb0c5;
+  font-size: 26px;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-card-button:hover,
+.next-card-button:hover {
+  color: #29a5dc;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.card-display-inner {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 24px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(100, 100, 100, 0.25);
+  height: calc(100vh - 114px - 54px - 10vh - 24px);
+  max-height: calc(calc(100vw - 340px - 144px) / 1.33333333);
+  max-width: calc(100vw - 340px - 144px);
+  width: calc(calc(100vh - 114px - 54px - 10vh - 24px) * 1.33333333);
+}
+
+.card-display-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  width: 100%;
+  padding: 1em;
+}
+.card-display-text {
+  font-size: 37px;
+  color: #333;
+  height: auto;
+  min-height: 30px;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.card-display-button {
+  align-self: center;
+  background-color: #7d93a4;
+  margin-top: 12px;
+  font-size: 14px;
+  height: 60px;
+  width: 33%;
+}
+
+.card-display-label {
+  align-items: center;
+  display: flex;
+  color: #6f99b8;
+  height: 1em;
+  font-size: 46px;
+  left: 18px;
+  opacity: 0.1;
+  position: absolute;
+  top: 50px;
+  font-weight: bold;
 }

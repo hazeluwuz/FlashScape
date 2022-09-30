@@ -9,11 +9,10 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { deleteDeckById } from "../../store/deck";
-import DeckForm from "../DeckModal";
-import CardForm from "../CardForm";
 import CardList from "../CardList";
 import DeckEditForm from "../DeckEditForm";
 import "./DeckDetails.css";
+import CardBrowse from "../CardBrowse";
 function DeckDetails() {
   const [editing, setEditing] = useState(false);
   const decks = useSelector((state) => state.decks);
@@ -84,7 +83,7 @@ function DeckDetails() {
             <CardList card_ids={deck.card_ids} />
           </Route>
           <Route path={`/dashboard/:classId/decks/:deckId/browse`}>
-            {/* "Study" / Browse */}
+            <CardBrowse deck={deck} />
           </Route>
         </Switch>
       </div>
