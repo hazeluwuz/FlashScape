@@ -36,17 +36,13 @@ function CardEditForm({ card, idx }) {
     const res = await dispatch(deleteCardById(card.id));
   };
 
-  const clearFocus = (e) => {
-    setInFocus(false);
-  };
-
   useEffect(() => {
     const errors = [];
     if (question.length < 5) {
       errors.push("question: Question must be at least 5 characters long");
     }
-    if (question.length > 50) {
-      errors.push("question: Question must be less than 50 characters long");
+    if (question.length > 500) {
+      errors.push("question: Question must be less than 500 characters long");
     }
     if (answer.length < 5) {
       errors.push("answer: Answer must be at least 5 characters long");
