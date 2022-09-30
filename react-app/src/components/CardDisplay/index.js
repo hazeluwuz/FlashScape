@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import "./CardDisplay.css";
 function CardDisplay({ card, index, deck_length }) {
   const [flipped, setFlipped] = useState(false);
-  const dispatch = useDispatch();
   useEffect(() => {
     setFlipped(false);
   }, [card]);
@@ -16,6 +14,7 @@ function CardDisplay({ card, index, deck_length }) {
           <div>
             Card {index + 1} of {deck_length}
           </div>
+          <div className="card-display-label">{flipped ? "A" : "Q"}</div>
         </div>
         <div className="card-display-content">
           <div className="card-display-text">
