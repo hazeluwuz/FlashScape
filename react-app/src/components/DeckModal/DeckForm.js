@@ -5,14 +5,13 @@ import { createNewDeck, updateDeckById } from "../../store/deck";
 import "./DeckForm.css";
 function DeckForm({ edit, closeModal }) {
   const [errors, setErrors] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
   const [name, setName] = useState("");
   const dispatch = useDispatch();
-  // very temporary will find better way in future lol
   const { classId, deckId } = useParams();
   const handleCreation = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setShowErrors(true);
     if (errors.length) return;
     const deckData = {
       class_id: classId,
@@ -38,17 +37,22 @@ function DeckForm({ edit, closeModal }) {
           type="text"
           className="text-input"
           value={name}
+          onInput={() => setShowErrors(true)}
           placeholder=" "
           onChange={(e) => setName(e.target.value)}
           required
         />
         <label>Deck Name</label>
       </div>
-      <button className="round-button deck-submit-button" type="submit">
+      <button
+        className="round-button deck-submit-button"
+        type="submit"
+        disabled={errors.length}
+      >
         Create Deck
       </button>
       <div className="display-errors">
-        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
+        {errors.length > 0 && showErrors && errors[0].split(": ")[1]}
       </div>
     </form>
   );

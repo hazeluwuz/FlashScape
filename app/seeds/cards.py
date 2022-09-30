@@ -14,14 +14,14 @@ def seed_cards():
         deck_id=1,
     )
     card3 = Card(
-        question="What mineral is known as the softest mineral?",
-        answer="Talc",
+        question="What is the largest artery in the human body?",
+        answer="The aorta",
         deck_id=1,
     )
 
     card4 = Card(
         question="How many calories must you burn to lose one pound?",
-        answer="3500",
+        answer="3500 calories",
         deck_id=2,
     )
 

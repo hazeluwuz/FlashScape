@@ -87,7 +87,6 @@
   left: -6px;
   box-sizing: border-box;
   min-width: 160px;
-  padding: 10px;
   position: absolute;
   top: 36px;
   animation: fadeIn 0.3s ease-in-out;
@@ -105,10 +104,15 @@
   cursor: pointer;
   padding-left: 10px;
 }
-
 .dropdown-item {
   display: flex;
+  padding: 10px;
   align-items: center;
+}
+.dropdown-item:hover,
+.dropdown-item:hover * {
+  background-color: #5aa6d6;
+  color: #ffffff;
 }
 @keyframes fadeIn {
   0% {

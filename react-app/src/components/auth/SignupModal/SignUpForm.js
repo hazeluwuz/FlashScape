@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../../store/session";
 import "./SignupForm.css";
+const validator = require("email-validator");
 const SignUpForm = ({ closeModal }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -11,6 +12,7 @@ const SignUpForm = ({ closeModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [showErrors, setShowErrors] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -40,6 +42,15 @@ const SignUpForm = ({ closeModal }) => {
     setRepeatPassword(e.target.value);
   };
 
+  const handleShowErrors = () => {
+    setShowErrors(true);
+  };
+
+  useEffect(() => {
+    document.addEventListener("input", handleShowErrors);
+    return () => document.removeEventListener("input", handleShowErrors);
+  }, []);
+
   useEffect(() => {
     const errors = [];
     if (firstName.length < 5) {
@@ -54,6 +65,10 @@ const SignUpForm = ({ closeModal }) => {
     if (lastName.length > 50) {
       errors.push("lastName: Last name must be less than 50 characters long");
     }
+    if (!validator.validate(email)) {
+      console.log(validator.validate(email));
+      errors.push("email: Invalid Email");
+    }
     if (password.length < 6) {
       errors.push("password: Password must be at least 6 characters long");
     }
@@ -64,7 +79,7 @@ const SignUpForm = ({ closeModal }) => {
       errors.push("repeatPassword: Passwords must match");
     }
     setErrors(errors);
-  }, [firstName, lastName, password, repeatPassword]);
+  }, [firstName, email, lastName, password, repeatPassword]);
 
   if (user) {
     return <Redirect to="/" />;
@@ -132,11 +147,15 @@ const SignUpForm = ({ closeModal }) => {
         ></input>{" "}
         <label>Repeat Password</label>
       </div>
-      <button className="signup-modal-button round-button" type="submit">
+      <button
+        className="signup-modal-button round-button"
+        type="submit"
+        disabled={errors.length}
+      >
         Sign Up
       </button>
       <div className="display-errors">
-        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
+        {errors.length > 0 && showErrors && errors[0].split(": ")[1]}
       </div>
     </form>
   );

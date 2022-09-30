@@ -7,14 +7,14 @@ function ClassForm({ closeModal }) {
   const classes = useSelector((state) => state.classes);
   const { classId } = useParams();
   const [errors, setErrors] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showErrors, setshowErrors] = useState(false);
   const curClass = classes[classId];
   const dispatch = useDispatch();
   const [name, setName] = useState(curClass?.name || "");
 
   const handleCreation = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setshowErrors(true);
     if (errors.length) return null;
     const classData = {
       name,
@@ -47,16 +47,21 @@ function ClassForm({ closeModal }) {
           value={name}
           placeholder=" "
           className="text-input"
+          onInput={() => setshowErrors(true)}
           onChange={(e) => setName(e.target.value)}
           required
         />
         <label>Class Name</label>
       </div>
-      <button className="class-submit-button round-button" type="submit">
+      <button
+        className="class-submit-button round-button"
+        type="submit"
+        disabled={errors.length}
+      >
         Create Class
       </button>
       <div className="display-errors">
-        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
+        {errors.length > 0 && showErrors && errors[0].split(": ")[1]}
       </div>
     </form>
   );

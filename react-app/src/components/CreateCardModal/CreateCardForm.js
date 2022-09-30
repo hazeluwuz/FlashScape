@@ -5,7 +5,7 @@ import { createNewCard, updateCardById } from "../../store/card";
 import "./CreateCardForm.css";
 function CreateCardForm({ closeModal }) {
   const [errors, setErrors] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const { deckId } = useParams();
@@ -13,7 +13,7 @@ function CreateCardForm({ closeModal }) {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setShowErrors(true);
     if (errors.length) return;
     const cardData = {
       deck_id: deckId,
@@ -46,6 +46,7 @@ function CreateCardForm({ closeModal }) {
             type="text"
             value={question}
             placeholder=" "
+            onInput={() => setShowErrors(true)}
             className="text-input"
             onChange={(e) => setQuestion(e.target.value)}
             required
@@ -56,6 +57,7 @@ function CreateCardForm({ closeModal }) {
           <input
             type="text"
             className="text-input"
+            onInput={() => setShowErrors(true)}
             value={answer}
             placeholder=" "
             onChange={(e) => setAnswer(e.target.value)}
@@ -63,12 +65,16 @@ function CreateCardForm({ closeModal }) {
           />
           <label>Answer</label>
         </div>
-        <button type="submit" className="round-button card-submit-button">
+        <button
+          type="submit"
+          className="round-button card-submit-button"
+          disabled={errors.length}
+        >
           Create Card
         </button>
       </div>
       <div className="display-errors ">
-        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
+        {errors.length > 0 && showErrors && errors[0].split(": ")[1]}
       </div>
     </form>
   );
