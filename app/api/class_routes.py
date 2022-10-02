@@ -56,6 +56,8 @@ def update_class(id):
     if form.validate_on_submit():
         c = Class.query.get(id)
         c.name = form.data["name"]
+        c.description = form.data["description"]
+        c.purpose = form.data["purpose"]
         db.session.commit()
         return c.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
