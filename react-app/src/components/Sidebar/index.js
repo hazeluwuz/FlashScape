@@ -55,7 +55,6 @@ function Sidebar() {
               <div className="profile-menu">
                 <div className="profile-dropdown">
                   <div className="dropdown-item">
-                    <i class="fa-solid fa-right-from-bracket logout-icon"></i>
                     <LogoutButton />
                   </div>
                 </div>
