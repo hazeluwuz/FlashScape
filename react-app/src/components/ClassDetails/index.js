@@ -13,8 +13,8 @@ import { useState, useEffect } from "react";
 import { getClassById } from "../../store/class";
 import DeckList from "../DeckList";
 import "./ClassDetails.css";
-import ClassModal from "../ClassModal";
 import ClassEditForm from "../ClassEditForm";
+import ClassAboutPage from "../ClassAboutPage";
 function ClassDetails() {
   const [editing, setEditing] = useState(false);
   const { classId } = useParams();
@@ -94,7 +94,10 @@ function ClassDetails() {
           </NavLink>
         </div>
         <Switch>
-          <Route path="/dashboard/:classId/decks">
+          <Route path={`${url}/about`}>
+            <ClassAboutPage classData={curClass} />
+          </Route>
+          <Route path={`${url}/decks`}>
             <DeckList deckIds={curClass.deck_ids} />
           </Route>
         </Switch>

@@ -1,0 +1,53 @@
+.class-about-outer-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px 42px;
+}
+.class-about-container {
+  margin-bottom: 36px;
+  position: relative;
+}
+.class-about-title-container {
+  align-items: center;
+  border-bottom: 1px solid rgba(46, 64, 86, 0.26);
+  display: flex;
+  height: 30px;
+  padding-bottom: 6px;
+}
+.class-about-title {
+  display: flex;
+  align-items: center;
+  color: #29a5dc;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.class-about-content {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 12px 12px 0 0 !important;
+  width: 100%;
+}
+.class-about-edit-button {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  color: rgba(124, 130, 142, 0.6);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-size: 12px;
+  height: 24px;
+  cursor: pointer;
+  margin: 0 0 0 6px;
+  width: 24px;
+}
+.class-about-edit-button:hover {
+  color: #29a5dc;
+  background-color: rgba(0, 0, 0, 0.1);
+}

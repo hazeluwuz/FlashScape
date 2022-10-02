@@ -9,11 +9,11 @@ def validate_name(form, field):
         raise ValidationError('Name must be less than 50 characters long')
 
 def validate_description(form, field):
-    if len(field.data) > 255:
+    if field.data and len(field.data) > 255:
         raise ValidationError('Description must be less than 255 characters long')
 
 def validate_purpose(form, field):
-    if len(field.data) > 255:
+    if field.data and len(field.data) > 255:
         raise ValidationError('Purpose must be less than 255 characters long')
 
 class ClassForm(FlaskForm):
