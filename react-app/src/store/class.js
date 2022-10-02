@@ -103,6 +103,7 @@ export const deleteClassById = (classId) => async (dispatch) => {
     const data = await response.json();
     return data;
   }
+  return response;
 };
 
 export default function reducer(state = {}, action) {

@@ -19,3 +19,8 @@
   flex-direction: column;
   align-items: center;
 }
+.card-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

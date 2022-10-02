@@ -53,13 +53,17 @@ function DeckEditForm({ deck, setEditing }) {
           >
             <i class="fa-solid fa-x deck-edit-cancel-icon"></i>
           </button>
-          <button type="submit" className="deck-edit-save round-button">
+          <button
+            type="submit"
+            className="deck-edit-save round-button"
+            disabled={errors.length}
+          >
             Save
           </button>
         </div>
       </div>
       <div className="display-errors deck-edit-errors">
-        {errors.length > 0 && isSubmitted && errors[0].split(": ")[1]}
+        {errors.length > 0 && errors[0].split(": ")[1]}
       </div>
     </form>
   );

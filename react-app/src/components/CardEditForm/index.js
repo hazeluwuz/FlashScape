@@ -36,17 +36,13 @@ function CardEditForm({ card, idx }) {
     const res = await dispatch(deleteCardById(card.id));
   };
 
-  const clearFocus = (e) => {
-    setInFocus(false);
-  };
-
   useEffect(() => {
     const errors = [];
     if (question.length < 5) {
       errors.push("question: Question must be at least 5 characters long");
     }
-    if (question.length > 50) {
-      errors.push("question: Question must be less than 50 characters long");
+    if (question.length > 500) {
+      errors.push("question: Question must be less than 500 characters long");
     }
     if (answer.length < 5) {
       errors.push("answer: Answer must be at least 5 characters long");
@@ -71,6 +67,7 @@ function CardEditForm({ card, idx }) {
                   type="text"
                   value={question}
                   onBlur={handleEdit}
+                  minLength="5"
                   onFocus={() => setInFocus(true)}
                   placeholder=" "
                   className={`card-edit-input card-left-input`}
@@ -100,7 +97,7 @@ function CardEditForm({ card, idx }) {
         </div>
       </form>
       <div className="card-edit-actions">
-        {inFocus && (
+        {inFocus && !errors.length && (
           <>
             <button
               className="card-edit-action-button"
@@ -118,6 +115,12 @@ function CardEditForm({ card, idx }) {
               <i className="fas fa-trash"></i>
             </button>
           </>
+        )}
+        {errors.length > 0 && (
+          <i
+            title="Card will not save unless errors are fixed"
+            class="fa-solid fa-circle-exclamation card-edit-warning"
+          ></i>
         )}
       </div>
       <div className="display-errors card-edit-errors">

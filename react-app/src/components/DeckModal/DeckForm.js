@@ -4,12 +4,15 @@ import { useParams } from "react-router-dom";
 import { createNewDeck, updateDeckById } from "../../store/deck";
 import "./DeckForm.css";
 function DeckForm({ edit, closeModal }) {
+  const [errors, setErrors] = useState([]);
+  const [showErrors, setShowErrors] = useState(false);
   const [name, setName] = useState("");
   const dispatch = useDispatch();
-  // very temporary will find better way in future lol
   const { classId, deckId } = useParams();
   const handleCreation = async (e) => {
     e.preventDefault();
+    setShowErrors(true);
+    if (errors.length) return;
     const deckData = {
       class_id: classId,
       name,
@@ -18,38 +21,39 @@ function DeckForm({ edit, closeModal }) {
     closeModal();
   };
 
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    const deckData = {
-      id: deckId,
-      class_id: classId,
-      name,
-    };
-    const temp = await dispatch(updateDeckById(deckData));
-    closeModal();
-  };
-
-  /*
-   This will end up being a modal in the future
-   Only using this as a test for the backend atm
-  */
+  useEffect(() => {
+    const errors = [];
+    if (name.length < 5)
+      errors.push("name: Name must be at least 5 characters");
+    if (name.length > 50)
+      errors.push("name: Name must be less than 50 characters");
+    setErrors(errors);
+  }, [name]);
 
   return (
-    <form className="deck-form" onSubmit={edit ? handleEdit : handleCreation}>
+    <form className="deck-form" onSubmit={handleCreation}>
       <div className="input-container">
         <input
           type="text"
           className="text-input"
           value={name}
+          onInput={() => setShowErrors(true)}
           placeholder=" "
           onChange={(e) => setName(e.target.value)}
           required
         />
         <label>Deck Name</label>
       </div>
-      <button className="round-button deck-submit-button" type="submit">
-        {edit ? "Edit Deck" : "Create Deck"}
+      <button
+        className="round-button deck-submit-button"
+        type="submit"
+        disabled={errors.length}
+      >
+        Create Deck
       </button>
+      <div className="display-errors">
+        {errors.length > 0 && showErrors && errors[0].split(": ")[1]}
+      </div>
     </form>
   );
 }
