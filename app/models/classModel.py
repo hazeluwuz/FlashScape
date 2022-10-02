@@ -1,3 +1,4 @@
+from email.policy import default
 from .db import db
 
 class Class(db.Model):
@@ -5,6 +6,8 @@ class Class(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(255), nullable=False)
+  description = db.Column(db.String(255), nullable=True)
+  purpose = db.Column(db.String(255), nullable=True, default='General Learning/Other')
   owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
   owner = db.relationship('User', back_populates='classes')
@@ -14,6 +17,8 @@ class Class(db.Model):
     return {
       'id': self.id,
       'name': self.name,
+      'description': self.description,
+      'purpose': self.purpose,
       'owner_id': self.owner_id,
       'deck_ids': [deck.id for deck in self.decks]
     }
