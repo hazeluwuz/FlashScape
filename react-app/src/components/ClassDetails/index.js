@@ -29,6 +29,10 @@ function ClassDetails() {
     dispatch(getClassById(classId));
   }, [dispatch]);
 
+  useEffect(() => {
+    setEditing(false);
+  }, [curUrl]);
+
   if (!curClass) return <Redirect to={`/dashboard`} />;
   else if (curClass && curUrl === `/dashboard/${classId}`) {
     history.push(`/dashboard/${classId}/decks`);

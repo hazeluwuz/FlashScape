@@ -1,4 +1,4 @@
-import { NavLink, useRouteMatch } from "react-router-dom";
+import { NavLink, useParams, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteDeckById } from "../../store/deck";
 import { useState } from "react";
@@ -12,7 +12,7 @@ function DeckCard({ deck }) {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteDeckById(deck.id));
+    dispatch(deleteDeckById(deck.id, deck.class_id));
   };
 
   return (
