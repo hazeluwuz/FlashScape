@@ -57,6 +57,11 @@ export const createNewDeck = (deck) => async (dispatch) => {
     dispatch(createDeck(newDeck));
     dispatch(addDeckToClass(newDeck.id, newDeck.class_id));
     return newDeck;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
   }
 };
 

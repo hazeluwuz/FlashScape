@@ -18,6 +18,7 @@ function DeckForm({ edit, closeModal }) {
       name,
     };
     const temp = await dispatch(createNewDeck(deckData));
+    console.log(temp);
     closeModal();
   };
 
