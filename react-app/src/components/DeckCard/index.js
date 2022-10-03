@@ -1,6 +1,7 @@
 import { NavLink, useParams, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteDeckById } from "../../store/deck";
+import { getClassById } from "../../store/class";
 import { useState } from "react";
 import "./DeckCard.css";
 
