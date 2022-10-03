@@ -114,3 +114,7 @@ textarea:focus {
   color: #ff6700;
   font-size: 28px;
 }
+.class-edit-about-save {
+  padding: 15px;
+  font-size: 16px;
+}
