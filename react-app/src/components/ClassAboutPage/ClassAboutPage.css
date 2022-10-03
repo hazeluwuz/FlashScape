@@ -23,7 +23,7 @@
   font-weight: 600;
 }
 
-.class-about-content {
+.class-about-content-container {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -31,6 +31,11 @@
   margin: 0;
   padding: 12px 12px 0 0 !important;
   width: 100%;
+}
+.class-about-content {
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid transparent;
 }
 .class-about-edit-button {
   align-items: center;

@@ -18,7 +18,7 @@ function ClassAboutSection({ field, classData }) {
           )}
         </div>
       </div>
-      <div className="class-about-content">
+      <div className="class-about-content-container">
         {isEditing ? (
           <ClassAboutSectionEdit
             classKey={key}
@@ -26,8 +26,11 @@ function ClassAboutSection({ field, classData }) {
             setIsEditing={setIsEditing}
           />
         ) : (
-          classData[key] ||
-          `No ${field}. Click the Edit button to add a ${field}.`
+          <div className="class-about-content">
+            {classData[key] ||
+              `No ${field}. Click the Edit button to add a $
+            {field}.`}
+          </div>
         )}
       </div>
     </div>

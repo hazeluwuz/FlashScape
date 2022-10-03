@@ -96,6 +96,11 @@ export const updateClassById = (classData) => async (dispatch) => {
     const newClassData = await response.json();
     dispatch(updateClass(newClassData));
     return newClassData;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
   }
 };
 
