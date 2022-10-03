@@ -94,10 +94,10 @@ function ClassDetails() {
           </NavLink>
         </div>
         <Switch>
-          <Route path={`${url}/about`}>
+          <Route path={`/dashboard/:classId/about`}>
             <ClassAboutPage classData={curClass} />
           </Route>
-          <Route path={`${url}/decks`}>
+          <Route path={`/dashboard/:classId/decks`}>
             <DeckList deckIds={curClass.deck_ids} />
           </Route>
         </Switch>
