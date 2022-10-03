@@ -81,8 +81,8 @@ function ClassDetails() {
           </div>
           <div className="class-mastery-container">
             {/* NOTE: NOT FUNCTIONAL WILL NEED TO FIX ONCE MASTERY/RATING SCORE IS IMPLEMENTED */}
-            <div className="class-mastery-percent">0.0%</div>
-            <div className="class-mastery-percent-label">Mastery</div>
+            {/* <div className="class-mastery-percent">0.0%</div>
+            <div className="class-mastery-percent-label">Mastery</div> */}
           </div>
         </div>
         <div className="class-details-nav">

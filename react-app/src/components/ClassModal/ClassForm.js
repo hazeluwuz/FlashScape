@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewClass, updateClassById } from "../../store/class";
 import "./ClassForm.css";
 function ClassForm({ closeModal }) {
   const classes = useSelector((state) => state.classes);
   const { classId } = useParams();
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [showErrors, setshowErrors] = useState(false);
   const curClass = classes[classId];
@@ -23,6 +24,7 @@ function ClassForm({ closeModal }) {
     if (data && data.errors) {
       setErrors(Object.values(data.errors));
     } else {
+      history.push(`/dashboard/${data.id}`);
       closeModal();
     }
   };
