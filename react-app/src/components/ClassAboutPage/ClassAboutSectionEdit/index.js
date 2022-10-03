@@ -5,7 +5,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import "./ClassAboutSectionEdit.css";
 
 function ClassAboutSectionEdit({ classKey, classData, setIsEditing }) {
-  const [data, setData] = useState(classData[classKey]);
+  const [data, setData] = useState(classData[classKey] || "");
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
   const title = classKey[0].toUpperCase() + classKey.slice(1);
@@ -17,6 +17,7 @@ function ClassAboutSectionEdit({ classKey, classData, setIsEditing }) {
       [classKey]: data,
     };
     const res = await dispatch(updateClassById(payload));
+
     if (res) {
       setIsEditing(false);
     }

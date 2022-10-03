@@ -28,8 +28,7 @@ function ClassAboutSection({ field, classData }) {
         ) : (
           <div className="class-about-content">
             {classData[key] ||
-              `No ${field}. Click the Edit button to add a $
-            {field}.`}
+              `No ${field}. Click the Edit button to add a ${field}.`}
           </div>
         )}
       </div>

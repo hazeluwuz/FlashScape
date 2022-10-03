@@ -51,16 +51,16 @@ def create_class():
 @class_routes.route("/<int:id>", methods=["PUT"])
 @login_required
 def update_class(id):
-    print("HIT WHAT")
     form = ClassForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    data = request.get_json()
     if form.validate_on_submit():
         c = Class.query.get(id)
         c.name = form.data["name"]
-        if form.data['description']:
-            c.description = form.data['description']
-        if form.data['purpose']:
-            c.purpose = form.data['purpose']
+        if 'description' in data:
+            c.description = ' '.join(data['description'].split())
+        if 'purpose' in data:
+            c.purpose = ' '.join(data['purpose'].split())
         db.session.commit()
         return c.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
