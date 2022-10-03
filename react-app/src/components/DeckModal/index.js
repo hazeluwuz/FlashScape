@@ -9,7 +9,11 @@ function DeckModal({ edit }) {
   };
   return (
     <>
-      <button className="deck-modal-button" onClick={() => setShowModal(true)}>
+      <button
+        className="deck-modal-button"
+        id="create-deck-button"
+        onClick={() => setShowModal(true)}
+      >
         {edit ? (
           <i className="fa-solid fa-pencil deck-edit-button"></i>
         ) : (
