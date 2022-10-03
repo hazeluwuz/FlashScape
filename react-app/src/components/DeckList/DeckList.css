@@ -17,3 +17,35 @@
   display: flex;
   flex-direction: column;
 }
+
+.deck-list-empty-container {
+  padding: 18px 42px;
+  font-size: 36px;
+}
+.deck-list-empty-header {
+  font-size: 19px;
+  color: #197096;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.deck-list-empty-message {
+  color: #4a4a4a;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0 0 16px;
+}
+
+.deck-list-create-deck-button {
+  background-color: #ff8243;
+  border-radius: 24px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  height: 48px;
+  margin: 0;
+}
+.deck-list-create-deck-button:hover {
+  background-color: #ffa476;
+}
