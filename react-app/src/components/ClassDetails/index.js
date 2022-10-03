@@ -21,42 +21,18 @@ function ClassDetails() {
   const { url } = useRouteMatch();
   const curUrl = useLocation().pathname;
   const classes = useSelector((state) => state.classes);
-  const cards = useSelector((state) => state.cards);
-  const decks = useSelector((state) => state.decks);
   const user = useSelector((state) => state.session.user);
+  const decks = useSelector((state) => state.decks);
   const dispatch = useDispatch();
   const history = useHistory();
   const curClass = classes[classId];
   useEffect(() => {
     dispatch(getClassById(classId));
-  }, [dispatch]);
+  }, [dispatch, decks]);
 
   useEffect(() => {
     setEditing(false);
   }, [curUrl]);
-
-  // const calculateDeckMastery = (deckId) => {
-  //   const deck = decks[deckId];
-  //   const deckCards = Object.values(cards).filter(
-  //     (card) => card.deck_id === deck.id
-  //   );
-  //   let test = 0;
-  //   for (let card of deckCards) {
-  //     test += card.mastery;
-  //   }
-  //   let maxMastery = deckCards.length * 5;
-  //   let deckMastery = (test / maxMastery) * 100;
-  //   return deckMastery;
-  // };
-
-  // const calculateClassMastery = () => {
-  //   let res = 0;
-  //   for (let id of curClass.deck_ids) {
-  //     res += calculateDeckMastery(id);
-  //   }
-  //   let classMastery = res / curClass.deck_ids.length;
-  //   return classMastery.toFixed(1);
-  // };
 
   if (!curClass) return <Redirect to={`/dashboard`} />;
   else if (curClass && curUrl === `/dashboard/${classId}`) {

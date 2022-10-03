@@ -23,6 +23,7 @@ function DeckCard({ deck }) {
       to={`${url}/${deck.id}/browse`}
       className="deck-card-container"
     >
+      <div className="deck-mastery">{Math.round(deck.mastery)}%</div>
       <div className="deck-card-inner-container">
         <h2 className="deck-card-name">{deck.name}</h2>
         {isShown && (
