@@ -1,4 +1,4 @@
-import { addDeckToClass } from "./class";
+import { addDeckToClass, removeDeckFromClass } from "./class";
 const GET_DECKS = "decks/GET_DECKS";
 const CREATE_DECK = "decks/CREATE_DECK";
 const DELETE_DECK = "decks/DELETE_DECK";
@@ -75,13 +75,14 @@ export const updateDeckById = (deck) => async (dispatch) => {
   }
 };
 
-export const deleteDeckById = (deckId) => async (dispatch) => {
+export const deleteDeckById = (deckId, classId) => async (dispatch) => {
   const response = await fetch(`/api/decks/${deckId}`, {
     method: "DELETE",
   });
   if (response.ok) {
     const data = await response.json();
     dispatch(deleteDeck(deckId));
+    dispatch(removeDeckFromClass(deckId, classId));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();

@@ -3,6 +3,7 @@ const CREATE_CLASS = "classes/CREATE_CLASS";
 const DELETE_CLASS = "classes/DELETE_CLASS";
 const UPDATE_CLASS = "classes/UPDATE_CLASS";
 const ADD_DECK_TO_CLASS = "classes/ADD_DECK_TO_CLASS";
+const REMOVE_DECK_FROM_CLASS = "classes/REMOVE_DECK_FROM_CLASS";
 
 const getClasses = (classes) => ({
   type: GET_CLASSES,
@@ -29,9 +30,14 @@ const updateClass = (classData) => ({
   payload: classData,
 });
 
-export const addDeckToClass = (deckId, class_id) => ({
+export const addDeckToClass = (deckId, classId) => ({
   type: ADD_DECK_TO_CLASS,
-  payload: { deckId, class_id },
+  payload: { deckId, classId },
+});
+
+export const removeDeckFromClass = (deckId, classId) => ({
+  type: REMOVE_DECK_FROM_CLASS,
+  payload: { deckId, classId },
 });
 
 export const getAllClasses = () => async (dispatch) => {
@@ -90,6 +96,11 @@ export const updateClassById = (classData) => async (dispatch) => {
     const newClassData = await response.json();
     dispatch(updateClass(newClassData));
     return newClassData;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
   }
 };
 
@@ -116,7 +127,13 @@ export default function reducer(state = {}, action) {
     case UPDATE_CLASS:
       return { ...state, [action.payload.id]: action.payload };
     case ADD_DECK_TO_CLASS:
-      newState[action.payload.class_id].deck_ids.push(action.payload.deckId);
+      newState[action.payload.classId].deck_ids.push(action.payload.deckId);
+      return newState;
+    case REMOVE_DECK_FROM_CLASS:
+      const { classId, deckId } = action.payload;
+      const deckIds = newState[classId].deck_ids;
+      const newDeckIds = deckIds.filter((id) => id !== deckId);
+      newState[classId].deck_ids = newDeckIds;
       return newState;
     case DELETE_CLASS:
       delete newState[action.payload];
