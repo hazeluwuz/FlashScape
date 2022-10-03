@@ -41,13 +41,19 @@
   font-weight: 700 !important;
   margin: 0;
   line-height: 1;
-  font-size: calc(64px + 40 * (100vw) / 1000);
+  font-size: calc(66px + 84 * ((100vw - 320px) / 1600));
+  margin-bottom: 4rem;
   white-space: pre-line !important;
 }
 .splash-subheader {
+  font-family: "Open Sans", sans-serif !important;
   color: #ffffff;
   font-weight: 300;
   margin-bottom: 4rem;
   line-height: 0;
-  font-size: 33px;
+  font-size: calc(21px + 12 * ((100vw - 320px) / 1600));
+}
+
+.splash-subheader > b {
+  font-weight: 600;
 }
