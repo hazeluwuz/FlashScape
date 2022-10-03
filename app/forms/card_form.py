@@ -17,5 +17,5 @@ def validate_answer(form,field):
 class CardForm(FlaskForm):
   question = StringField('question', validators=[DataRequired(), validate_question])
   answer = StringField('answer', validators=[DataRequired()])
-  # mastery will go here (eventually)
+  mastery = IntegerField('mastery', validators=[DataRequired()])
   deck_id = IntegerField('deck_id', validators=[DataRequired()])

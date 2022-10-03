@@ -21,7 +21,6 @@ def create_card():
         card = Card(
             question=form.data["question"],
             answer=form.data["answer"],
-            # mastery eventually
             deck_id=form.data["deck_id"],
         )
         db.session.add(card)
@@ -39,7 +38,8 @@ def edit_card(id):
     if form.validate_on_submit():
         card.question = form.data["question"]
         card.answer = form.data["answer"]
-        # mastery eventually
+        if form.data['mastery']:
+            card.mastery = form.data['mastery']
         card.deck_id = form.data["deck_id"]
         db.session.commit()
         return card.to_dict()
