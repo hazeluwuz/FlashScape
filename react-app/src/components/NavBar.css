@@ -10,12 +10,13 @@
   z-index: 5;
 }
 .nav-logo {
-  background-image: url("https://www.brainscape.com/assets/cms/public-views/shared/Brainscape-logo.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
+  display: flex;
   height: 45px;
   cursor: pointer;
   width: 143px;
+}
+.logo-img {
+  scale: 1;
 }
 .logo-container {
   padding-left: 4%;

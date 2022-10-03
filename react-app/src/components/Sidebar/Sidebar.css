@@ -1,7 +1,14 @@
 .dashboard-container {
   display: flex;
 }
-
+.side-bar-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  width: 30px;
+  height: 30px;
+}
 .side-bar {
   background-color: #324054;
   box-sizing: border-box;
@@ -18,8 +25,9 @@
 }
 
 .side-bar-logo {
-  width: 30px;
-  height: 30px;
+  object-fit: fill;
+  width: 60px;
+  height: 60px;
 }
 
 .side-bar-info-outer {
