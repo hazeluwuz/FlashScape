@@ -22,7 +22,11 @@ function CreateCardForm({ closeModal }) {
       answer,
     };
     const res = await dispatch(createNewCard(cardData));
-    closeModal();
+    if (res && res.errors) {
+      setErrors(res.errors);
+    } else {
+      closeModal();
+    }
   };
 
   useEffect(() => {
