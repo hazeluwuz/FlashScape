@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./Sidebar.css";
 import LogoutButton from "../auth/LogoutButton";
 import ClassList from "../ClassList";
+import smallLogo from "../../images/small-logo.png";
 
 function Sidebar() {
   const user = useSelector((state) => state.session.user);
@@ -29,10 +30,7 @@ function Sidebar() {
       <div className="side-bar-info-outer">
         <div className="side-bar-info">
           <div className="side-bar-logo-container">
-            <img
-              className="side-bar-logo"
-              src="https://www.brainscape.com/pks/static/small-bruce-55b71d9f06c428136b21.svg"
-            />
+            <img className="side-bar-logo" src={smallLogo} />
           </div>
           <div className="user-info">
             <div className="user-picture-container">
