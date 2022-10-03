@@ -16,8 +16,6 @@ function ClassEditForm({ classData, setEditing }) {
     const payload = {
       id: classData.id,
       name,
-      description: classData.description,
-      purpose: classData.purpose,
     };
 
     await dispatch(updateClassById(payload));

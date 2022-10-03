@@ -37,9 +37,8 @@ def edit_card(id):
     form = CardForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        card.question = form.data["question"]
-        card.answer = form.data["answer"]
-        # mastery eventually
+        card.question = ' '.join(form.data['question'].split())
+        card.answer = ' '.join(form.data["answer"].split())
         card.deck_id = form.data["deck_id"]
         db.session.commit()
         return card.to_dict()
