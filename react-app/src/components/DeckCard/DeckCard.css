@@ -59,3 +59,16 @@
   text-align: center;
   line-height: 100%;
 }
+
+.mastery-bar-outer {
+  background-color: rgba(125, 147, 164, 0.15);
+  border-radius: 15px;
+  height: 10px;
+  width: 30vw;
+}
+
+.mastery-bar-inner {
+  height: 10px;
+  border-radius: 15px;
+  background-color: #29a5dc;
+}
