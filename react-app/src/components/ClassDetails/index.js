@@ -15,6 +15,8 @@ import DeckList from "../DeckList";
 import "./ClassDetails.css";
 import ClassEditForm from "../ClassEditForm";
 import ClassAboutPage from "../ClassAboutPage";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 function ClassDetails() {
   const [editing, setEditing] = useState(false);
   const { classId } = useParams();
@@ -81,11 +83,20 @@ function ClassDetails() {
             </div>
           </div>
           <div className="class-mastery-container">
-            {/* NOTE: NOT FUNCTIONAL WILL NEED TO FIX ONCE MASTERY/RATING SCORE IS IMPLEMENTED */}
-            <div className="class-mastery-percent">
-              {curClass.mastery.toFixed(1)}%
+            <CircularProgressbar
+              value={curClass.mastery}
+              styles={buildStyles({
+                strokeLinecap: "butt",
+                trailColor: "#ECEFF1",
+                pathColor: "#29A5DC",
+              })}
+            />
+            <div className="class-mastery-inner-container">
+              <div className="class-mastery-percent">
+                {curClass.mastery.toFixed(1)}%
+              </div>
+              <div className="class-mastery-percent-label">Mastery</div>
             </div>
-            <div className="class-mastery-percent-label">Mastery</div>
           </div>
         </div>
         <div className="class-details-nav">
