@@ -31,6 +31,12 @@ function CardEditForm({ card, idx }) {
     }
   };
 
+  const preventEnter = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  };
+
   const handleDelete = async (e) => {
     e.preventDefault();
     const res = await dispatch(deleteCardById(card.id));
@@ -67,6 +73,7 @@ function CardEditForm({ card, idx }) {
                   type="text"
                   value={question}
                   onBlur={handleEdit}
+                  onKeyPress={preventEnter}
                   minLength="5"
                   onFocus={() => setInFocus(true)}
                   placeholder=" "
@@ -85,6 +92,7 @@ function CardEditForm({ card, idx }) {
                   type="text"
                   className="card-edit-input"
                   value={answer}
+                  onKeyPress={preventEnter}
                   onBlur={handleEdit}
                   onFocus={() => setInFocus(true)}
                   placeholder=" "

@@ -36,8 +36,8 @@ def edit_card(id):
     form = CardForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        card.question = form.data["question"]
-        card.answer = form.data["answer"]
+        card.question = ' '.join(form.data['question'].split())
+        card.answer = ' '.join(form.data["answer"].split())
         if form.data['mastery']:
             card.mastery = form.data['mastery']
         card.deck_id = form.data["deck_id"]
