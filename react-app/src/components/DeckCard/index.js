@@ -27,10 +27,10 @@ function DeckCard({ deck }) {
 
   useEffect(() => {
     handleMasteryColor();
-  }, []);
+  }, [deck]);
   const handleMasteryColor = () => {
+    if (!deck) return;
     const mastery = Math.round(deck.mastery);
-    console.log(mastery);
     if (mastery === 0) setMasteryColor(colors[0]);
     else if (mastery > 0 && mastery < 30) setMasteryColor(colors[1]);
     else if (mastery >= 30 && mastery < 50) setMasteryColor(colors[2]);

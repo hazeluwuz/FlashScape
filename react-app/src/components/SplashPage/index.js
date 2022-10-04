@@ -19,7 +19,7 @@ function SplashPage() {
         <h2 className="splash-subheader">
           Flashcards for <b>serious learners.</b>
         </h2>
-        <Footer />
+        {/* <Footer /> */}
       </div>
       <div className="carousel-container">
         {/* Plan to implement carousel similar to BrainScape Eventually */}
