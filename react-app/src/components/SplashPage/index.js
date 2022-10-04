@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Footer from "../Footer";
 import "./SplashPage.css";
 function SplashPage() {
   const user = useSelector((state) => state.session.user);
@@ -18,6 +19,7 @@ function SplashPage() {
         <h2 className="splash-subheader">
           Flashcards for <b>serious learners.</b>
         </h2>
+        <Footer />
       </div>
       <div className="carousel-container">
         {/* Plan to implement carousel similar to BrainScape Eventually */}
