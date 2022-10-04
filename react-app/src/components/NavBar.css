@@ -12,7 +12,6 @@
 .nav-logo {
   display: flex;
   height: 45px;
-  cursor: pointer;
   width: 143px;
 }
 .logo-img {
@@ -40,6 +39,7 @@
   border: none;
   cursor: pointer;
   font-weight: 500;
+  font-size: calc(12px + 2 * ((100vw - 320px) / 1600));
   width: 100%;
   height: 100%;
 }
@@ -51,5 +51,13 @@
   background-color: #ff8243;
   color: #ffffff;
   border: none;
+  font-size: calc(12px + 2 * ((100vw - 320px) / 1600));
   font-weight: 500;
+}
+.login-button:hover {
+  font-size: calc(12.5px + 2 * ((100vw - 320px) / 1600));
+  background-color: #eff2f2;
+}
+.signup-button:hover {
+  font-size: calc(12.5px + 2 * ((100vw - 320px) / 1600));
 }
