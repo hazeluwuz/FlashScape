@@ -66,7 +66,6 @@ const SignUpForm = ({ closeModal }) => {
       errors.push("lastName: Last name must be less than 50 characters long");
     }
     if (!validator.validate(email)) {
-      console.log(validator.validate(email));
       errors.push("email: Invalid Email");
     }
     if (password.length < 6) {

@@ -13,6 +13,12 @@ class Class(db.Model):
   owner = db.relationship('User', back_populates='classes')
   decks = db.relationship('Deck', back_populates='class_parent', cascade='all, delete-orphan')
 
+  def get_mastery_avg(self):
+    if len(self.decks) == 0:
+      return 0
+    deck_avgs = [deck.get_mastery_avg() for deck in self.decks if len(deck.cards) > 0]
+    return sum(deck_avgs) / len(deck_avgs)
+
   def to_dict(self):
     return {
       'id': self.id,
@@ -20,5 +26,6 @@ class Class(db.Model):
       'description': self.description,
       'purpose': self.purpose,
       'owner_id': self.owner_id,
-      'deck_ids': [deck.id for deck in self.decks]
+      'deck_ids': [deck.id for deck in self.decks],
+      "mastery": self.get_mastery_avg(),
     }

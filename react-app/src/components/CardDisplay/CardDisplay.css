@@ -106,10 +106,18 @@
 .card-display-button {
   align-self: center;
   background-color: #7d93a4;
-  margin-top: 12px;
   font-size: 14px;
   height: 60px;
-  width: 33%;
+  width: calc(
+    calc(calc(100vh - 114px - 54px - 10vh - 24px) * 1.33333333) * 0.5
+  );
+}
+
+.card-bottom-section {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  min-height: 120px;
 }
 
 .card-display-label {
@@ -131,6 +139,5 @@
   }
   100% {
     scale: 1;
-    transform: none;
   }
 }

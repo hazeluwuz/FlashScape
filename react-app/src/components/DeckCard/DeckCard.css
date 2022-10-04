@@ -49,3 +49,26 @@
   background-color: rgba(0, 0, 0, 0.1);
   color: #29a5dc;
 }
+
+.deck-mastery {
+  color: #29a5dc;
+  width: 54px;
+  margin: 0 24px 0 0;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 100%;
+}
+
+.mastery-bar-outer {
+  background-color: rgba(125, 147, 164, 0.15);
+  border-radius: 15px;
+  height: 10px;
+  width: 30vw;
+}
+
+.mastery-bar-inner {
+  height: 10px;
+  border-radius: 15px;
+  background-color: #29a5dc;
+}

@@ -53,6 +53,11 @@ export const createNewCard = (card) => async (dispatch) => {
     dispatch(createCard(newCard));
     dispatch(addCardToDeck(newCard.id, newCard.deck_id));
     return newCard;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
   }
 };
 
