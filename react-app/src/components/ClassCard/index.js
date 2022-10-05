@@ -32,7 +32,7 @@ function ClassCard({ classData }) {
             <h2 className="class-card-name">{classData.name}</h2>
           </div>
         </NavLink>
-        <ClassDeleteModal classData={classData} />
+        {isShown && <ClassDeleteModal classData={classData} />}
       </div>
     )
   );
