@@ -1,3 +1,4 @@
+import { addClassToUser, removeClassFromUser } from "./session";
 const GET_CLASSES = "classes/GET_CLASSES";
 const CREATE_CLASS = "classes/CREATE_CLASS";
 const DELETE_CLASS = "classes/DELETE_CLASS";
@@ -48,7 +49,7 @@ export const getAllClasses = () => async (dispatch) => {
   }
 };
 
-export const getCurrentUserClasses = (userId) => async (dispatch) => {
+export const getCurrentUserClasses = () => async (dispatch) => {
   const response = await fetch(`/api/classes/current`);
   if (response.ok) {
     const classes = await response.json();
@@ -75,6 +76,7 @@ export const createNewClass = (classData) => async (dispatch) => {
   if (response.ok) {
     const newClassData = await response.json();
     dispatch(createClass(newClassData));
+    dispatch(addClassToUser(newClassData.id));
     return newClassData;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -110,6 +112,7 @@ export const deleteClassById = (classId) => async (dispatch) => {
   });
   if (response.ok) {
     dispatch(deleteClass(classId));
+    dispatch(removeClassFromUser(classId));
   } else if (response.status < 500) {
     const data = await response.json();
     return data;

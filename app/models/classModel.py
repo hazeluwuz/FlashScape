@@ -17,7 +17,7 @@ class Class(db.Model):
     if len(self.decks) == 0:
       return 0
     deck_avgs = [deck.get_mastery_avg() for deck in self.decks if len(deck.cards) > 0]
-    return sum(deck_avgs) / len(deck_avgs)
+    return sum(deck_avgs) / len(deck_avgs) if len(deck_avgs) > 0 else 0
 
   def to_dict(self):
     return {

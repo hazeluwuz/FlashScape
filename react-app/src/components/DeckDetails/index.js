@@ -4,6 +4,7 @@ import {
   NavLink,
   Link,
   Switch,
+  Redirect,
   Route,
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,6 +15,7 @@ import DeckEditForm from "../DeckEditForm";
 import "./DeckDetails.css";
 import CardBrowse from "../CardBrowse";
 function DeckDetails() {
+  const sessionUser = useSelector((state) => state.session.user);
   const [editing, setEditing] = useState(false);
   const decks = useSelector((state) => state.decks);
   const classes = useSelector((state) => state.classes);
@@ -29,7 +31,14 @@ function DeckDetails() {
     history.push(`/dashboard/${classId}`);
   };
 
-  if (!deck) return null;
+  if (!deck) return <Redirect to={`/dashboard/${classId}`} />;
+  else if (deck && deck.class_id != classId) {
+    return <Redirect to={`/dashboard/${classId}`} />;
+  }
+
+  if (curClass && curClass.owner_id !== sessionUser.id) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     deck && (

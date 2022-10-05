@@ -6,7 +6,9 @@ import ClassModal from "../ClassModal";
 import "./ClassList.css";
 function ClassList() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const classes = useSelector((state) => Object.values(state.classes));
+  const sessionUser = useSelector((state) => state.session.user);
+  const classesSlice = useSelector((state) => state.classes);
+  const classes = sessionUser.class_ids.map((id) => classesSlice[id]);
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {

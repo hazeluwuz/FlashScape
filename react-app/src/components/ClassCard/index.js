@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { deleteClassById } from "../../store/class";
 import "./ClassCard.css";
 
 function ClassCard({ classData }) {
+  const sessionUser = useSelector((state) => state.session.user);
   const [isShown, setIsShown] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ function ClassCard({ classData }) {
       history.push("/dashboard");
     }
   };
+
+  if (!classData) return null;
 
   return (
     classData && (

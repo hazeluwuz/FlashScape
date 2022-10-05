@@ -9,13 +9,12 @@ import { authenticate } from "./store/session";
 import SplashPage from "./components/SplashPage";
 import Dashboard from "./components/Dashboard";
 import { getAllCards } from "./store/card";
-import { getAllClasses } from "./store/class";
+import { getAllClasses, getCurrentUserClasses } from "./store/class";
 import { getAllDecks } from "./store/deck";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     (async () => {
@@ -32,24 +31,26 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      {!user && <NavBar />}
-      <Switch>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
-        {/* BACKEND TESTING ROUTES */}
-        <ProtectedRoute path="/dashboard">
-          <Dashboard />
-        </ProtectedRoute>
-        <Route path="/" exact>
-          <SplashPage />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    loaded && (
+      <BrowserRouter>
+        {!user && <NavBar />}
+        <Switch>
+          <ProtectedRoute path="/users" exact={true}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true}>
+            <User />
+          </ProtectedRoute>
+          {/* BACKEND TESTING ROUTES */}
+          <ProtectedRoute path="/dashboard">
+            <Dashboard />
+          </ProtectedRoute>
+          <Route path="/" exact>
+            <SplashPage />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    )
   );
 }
 

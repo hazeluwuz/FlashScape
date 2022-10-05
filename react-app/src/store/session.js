@@ -1,6 +1,8 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const ADD_CLASS_TO_USER = "session/ADD_CLASS_TO_USER";
+const REMOVE_CLASS_FROM_USER = "session/REMOVE_CLASS_FROM_USER";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -29,6 +31,15 @@ export const authenticate = () => async (dispatch) => {
   }
 };
 
+export const addClassToUser = (classId) => ({
+  type: ADD_CLASS_TO_USER,
+  payload: classId,
+});
+
+export const removeClassFromUser = (classId) => ({
+  type: REMOVE_CLASS_FROM_USER,
+  payload: classId,
+});
 export const login = (email, password) => async (dispatch) => {
   const response = await fetch("/api/auth/login", {
     method: "POST",
@@ -97,11 +108,24 @@ export const signUp =
   };
 
 export default function reducer(state = initialState, action) {
+  const newState = { ...state };
   switch (action.type) {
     case SET_USER:
       return { user: action.payload };
     case REMOVE_USER:
       return { user: null };
+    case ADD_CLASS_TO_USER: {
+      const newClassIds = [...state.user.class_ids, action.payload];
+      newState.user.class_ids = newClassIds;
+      return newState;
+    }
+    case REMOVE_CLASS_FROM_USER: {
+      const classIds = [...state.user.class_ids];
+      const newClassIds = classIds.filter((id) => id !== action.payload);
+      console.log(newClassIds);
+      newState.user.class_ids = newClassIds;
+      return newState;
+    }
     default:
       return state;
   }
