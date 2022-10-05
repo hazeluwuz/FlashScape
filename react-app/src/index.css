@@ -57,7 +57,32 @@ a {
   border-bottom: 4px solid #197096;
   outline: none;
 }
-
+.modal-warning-actions {
+  display: flex;
+  gap: 15px;
+}
+.cancel-button {
+  align-items: center;
+  border: none;
+  border-radius: 42px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  font-family: "Proxima Nova", sans-serif;
+  font-size: 12px;
+  height: 48px;
+  font-weight: 300;
+  justify-content: center;
+  letter-spacing: 0.12em;
+  outline-style: none;
+  padding: 0 25.2px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background-color: #29a5dc;
+}
 .input-container {
   display: flex;
   position: relative;

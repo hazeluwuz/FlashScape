@@ -1,44 +1,39 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { deleteClassById } from "../../store/class";
+import ClassDeleteModal from "../ClassDeleteModal";
+
 import "./ClassCard.css";
 
 function ClassCard({ classData }) {
+  const sessionUser = useSelector((state) => state.session.user);
   const [isShown, setIsShown] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
-  const handleDelete = async (e, id) => {
-    e.preventDefault();
-    const res = await dispatch(deleteClassById(classData.id));
-    if (res.ok) {
-      history.push("/dashboard");
-    }
-  };
+
+  if (!classData) return null;
 
   return (
     classData && (
-      <NavLink
+      <div
+        className="class-card-container"
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
-        className="class-card-container"
-        to={`/dashboard/${classData.id}`}
       >
-        <div className="class-card-icon-container">
-          <img
-            className="class-card-icon"
-            src="https://www.brainscape.com/assets/app_icons/ugs.png"
-          />
-        </div>
-        <div>
-          <h2 className="class-card-name">{classData.name}</h2>
-        </div>
-        {isShown && (
-          <div className="class-card-delete" onClick={handleDelete}>
-            <i class="fa-solid fa-x"></i>
+        <NavLink className="class-card-link" to={`/dashboard/${classData.id}`}>
+          <div className="class-card-icon-container">
+            <img
+              className="class-card-icon"
+              src="https://www.brainscape.com/assets/app_icons/ugs.png"
+            />
           </div>
-        )}
-      </NavLink>
+          <div>
+            <h2 className="class-card-name">{classData.name}</h2>
+          </div>
+        </NavLink>
+        <ClassDeleteModal classData={classData} />
+      </div>
     )
   );
 }

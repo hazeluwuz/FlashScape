@@ -18,6 +18,7 @@ import ClassAboutPage from "../ClassAboutPage";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 function ClassDetails() {
+  const sessionUser = useSelector((state) => state.session.user);
   const [editing, setEditing] = useState(false);
   const { classId } = useParams();
   const { url } = useRouteMatch();
@@ -29,7 +30,9 @@ function ClassDetails() {
   const history = useHistory();
   const curClass = classes[classId];
   useEffect(() => {
-    dispatch(getClassById(classId));
+    if (sessionUser.class_ids.includes(Number(classId))) {
+      dispatch(getClassById(classId));
+    }
   }, [dispatch, decks]);
 
   useEffect(() => {
@@ -39,6 +42,10 @@ function ClassDetails() {
   if (!curClass) return <Redirect to={`/dashboard`} />;
   else if (curClass && curUrl === `/dashboard/${classId}`) {
     history.push(`/dashboard/${classId}/decks`);
+  }
+
+  if (curClass && sessionUser.id !== curClass.owner_id) {
+    return <Redirect to={`/dashboard`} />;
   }
 
   return (

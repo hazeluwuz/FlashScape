@@ -5,6 +5,7 @@ import { getClassById } from "../../store/class";
 import { useState } from "react";
 import "./DeckCard.css";
 import { useEffect } from "react";
+import DeckDeleteModal from "../DeckDeleteModal";
 
 function DeckCard({ deck }) {
   const colors = {
@@ -40,35 +41,32 @@ function DeckCard({ deck }) {
   };
   if (!deck) return null;
   return (
-    <NavLink
+    <div
+      className="deck-card-container"
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
-      to={`${url}/${deck.id}/browse`}
-      className="deck-card-container"
     >
-      <div className="deck-mastery" style={{ color: masteryColor }}>
-        {Math.round(deck.mastery)}%
-      </div>
-      <div className="deck-card-inner-container">
-        <div>
-          <h2 className="deck-card-name">{deck.name}</h2>
-          <div className="mastery-bar-outer">
-            <div
-              className="mastery-bar-inner"
-              style={{
-                width: `${Math.round(deck.mastery)}%`,
-                backgroundColor: masteryColor,
-              }}
-            />
+      <NavLink to={`${url}/${deck.id}/browse`} className="deck-card-link">
+        <div className="deck-mastery" style={{ color: masteryColor }}>
+          {Math.round(deck.mastery)}%
+        </div>
+        <div className="deck-card-inner-container">
+          <div>
+            <h2 className="deck-card-name">{deck.name}</h2>
+            <div className="mastery-bar-outer">
+              <div
+                className="mastery-bar-inner"
+                style={{
+                  width: `${Math.round(deck.mastery)}%`,
+                  backgroundColor: masteryColor,
+                }}
+              />
+            </div>
           </div>
         </div>
-        {isShown && (
-          <button onClick={handleDelete} className="deck-delete-button">
-            <i class="fa-solid fa-trash deck-delete-icon"></i>
-          </button>
-        )}
-      </div>
-    </NavLink>
+      </NavLink>
+      {isShown && <DeckDeleteModal deckData={deck} />}
+    </div>
   );
 }
 export default DeckCard;

@@ -1,0 +1,32 @@
+.class-modal-delete {
+  background-color: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+}
+
+.class-modal-delete > i {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 10px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 24px;
+  cursor: pointer;
+  z-index: 99999;
+}
+
+.class-modal-delete > i:hover {
+  color: #3faee0;
+}
+.class-delete-modal {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  grid-row-gap: 1.3rem;
+  max-height: calc(80vh - 60px);
+  max-width: calc(80vw - 60px);
+  overflow: auto;
+  width: 540px;
+}
