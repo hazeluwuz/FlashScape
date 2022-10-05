@@ -15,10 +15,7 @@ function Footer() {
           <a href="https://github.com/hazeluwuz" target="_blank">
             <i className="fab fa-github fa-xl" />
           </a>
-          <a
-            href="https://www.linkedin.com/in/hazel-guzzetti-50445b23b/"
-            target="_blank"
-          >
+          <a href="https://www.linkedin.com" target="_blank">
             <i className="fab fa-linkedin fa-xl" />
           </a>
         </div>
