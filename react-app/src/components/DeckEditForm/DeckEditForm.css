@@ -9,6 +9,8 @@
   width: 72vw;
   max-width: 72vw;
   font-size: 24px;
+  height: 36px;
+
   font-weight: 700;
   padding: 0 6px;
 }
@@ -25,6 +27,8 @@
 }
 .deck-edit-form {
   display: flex;
+  height: 36px;
+
   position: relative;
   max-width: 72vw;
   margin: -6px 0 -6px -8px;
