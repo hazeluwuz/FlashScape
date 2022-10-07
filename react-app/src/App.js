@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -47,6 +47,9 @@ function App() {
           </ProtectedRoute>
           <Route path="/" exact>
             <SplashPage />
+          </Route>
+          <Route>
+            <Redirect to="/" />
           </Route>
         </Switch>
       </BrowserRouter>
