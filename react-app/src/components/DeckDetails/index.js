@@ -40,6 +40,8 @@ function DeckDetails() {
     return <Redirect to="/dashboard" />;
   }
 
+  if (!curClass) return <Redirect to="/dashboard" />;
+
   return (
     deck && (
       <div className="deck-details-outer-container">
