@@ -86,7 +86,10 @@
 .user-info-outer {
   display: flex;
 }
-
+.user-info-name {
+  margin: 0px 15px;
+  word-break: break-all;
+}
 .profile-menu {
   background-color: #f4f6f6;
   border: 1px solid rgba(0, 0, 0, 0.15);

@@ -27,7 +27,7 @@ function ClassList() {
           </div>
         </div>
         {classes.map((c) => (
-          <ClassCard classData={c} />
+          <ClassCard key={c?.id} classData={c} />
         ))}
       </div>
     )
