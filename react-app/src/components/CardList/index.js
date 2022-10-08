@@ -14,7 +14,7 @@ function CardList({ card_ids }) {
   return (
     <div className="card-list">
       {card_ids.map((card_id, idx) => (
-        <CardEditForm card={cards[card_id]} idx={idx} />
+        <CardEditForm key={card_id} card={cards[card_id]} idx={idx} />
       ))}
       <div className="new-card-container">
         <div className="card-number"></div>

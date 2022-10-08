@@ -48,7 +48,7 @@ function DeckList({ deckIds }) {
             </div>
           )}
           {deckIds.map((deckId) => (
-            <DeckCard deck={decks[deckId]} />
+            <DeckCard key={deckId} deck={decks[deckId]} />
           ))}
         </div>
       </>
