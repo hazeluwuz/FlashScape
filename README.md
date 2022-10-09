@@ -1,5 +1,5 @@
 # FlashScape! ( A clone of BrainScape )
-FlashScape is a simple clone of the Flashcard app "BrainScape".
+FlashScape is a simple clone of the Flashcard app "BrainScape". The app currently features the ability for users to create classes, as well as unique decks and cards for each class.
 
 ## This project was developed utilizing:
 
