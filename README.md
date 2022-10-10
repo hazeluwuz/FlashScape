@@ -45,4 +45,19 @@ flask seed all
 
 ### Your local host should be running with full functionality now!
 
+## Site Screenshots
+
+### Splash Page
+![image](https://user-images.githubusercontent.com/28935811/194788220-cbcd9db1-5ec5-479d-882d-36fb8d5eda7d.png)
+
+### User Dashboard
+![image](https://user-images.githubusercontent.com/28935811/194788232-6de19f93-1668-4aa3-8e43-d16539f57fe6.png)
+
+### Study Cards
+![image](https://user-images.githubusercontent.com/28935811/194788246-eb808e0b-4c81-4cd2-b6ae-71e0b58bab2a.png)
+
+### Edit Cards
+![image](https://user-images.githubusercontent.com/28935811/194788255-9c60a45c-9673-44da-ad4b-e75a6dc2c9e7.png)
+
+
 ***
