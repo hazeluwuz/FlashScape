@@ -96,6 +96,9 @@ function DeckDetails() {
           <Route path={`/dashboard/:classId/decks/:deckId/browse`}>
             <CardBrowse deck={deck} />
           </Route>
+          <Route>
+            <Redirect to="/" />
+          </Route>
         </Switch>
       </div>
     )
