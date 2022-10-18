@@ -9,6 +9,15 @@
   min-width: 100%;
 }
 
+.carousel-container {
+  height: 100%;
+}
+
+.carousel-slider {
+  max-height: 100vh;
+  height: 100vh;
+}
+
 .carousel-overlay {
   background: linear-gradient(10deg, #19202a, transparent);
   height: 100%;
@@ -50,4 +59,20 @@
   margin-bottom: 4rem;
   line-height: 0;
   font-size: 33px;
+}
+.slider-wrapper {
+  height: 100vh;
+  object-fit: cover;
+}
+
+.slide {
+  height: 100vh;
+  object-fit: cover;
+}
+.slide img {
+  height: 100%;
+  object-fit: cover;
+}
+.carousel {
+  height: 100vh;
 }
