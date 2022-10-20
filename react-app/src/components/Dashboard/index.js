@@ -1,4 +1,10 @@
-import { Switch, useHistory, useLocation } from "react-router-dom";
+import {
+  Switch,
+  useHistory,
+  useLocation,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProtectedRoute from "../auth/ProtectedRoute";
 import Sidebar from "../Sidebar";

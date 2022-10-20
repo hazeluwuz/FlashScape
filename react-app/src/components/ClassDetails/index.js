@@ -121,6 +121,9 @@ function ClassDetails() {
           <Route path={`/dashboard/:classId/decks`}>
             <DeckList deckIds={curClass.deck_ids} />
           </Route>
+          <Route>
+            <Redirect to="/" />
+          </Route>
         </Switch>
       </div>
     )

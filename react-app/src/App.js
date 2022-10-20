@@ -35,13 +35,6 @@ function App() {
       <BrowserRouter>
         {!user && <NavBar />}
         <Switch>
-          <ProtectedRoute path="/users" exact={true}>
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true}>
-            <User />
-          </ProtectedRoute>
-          {/* BACKEND TESTING ROUTES */}
           <ProtectedRoute path="/dashboard">
             <Dashboard />
           </ProtectedRoute>
