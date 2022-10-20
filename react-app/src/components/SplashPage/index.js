@@ -1,6 +1,14 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
+import img1 from "./images/1.jpg";
+import img2 from "./images/2.jpg";
+import img3 from "./images/3.jpg";
+import img4 from "./images/4.jpg";
+import img5 from "./images/5.jpg";
+import img6 from "./images/6.jpg";
+import img7 from "./images/7.jpg";
+import img8 from "./images/8.jpg";
 import Footer from "../Footer";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./SplashPage.css";
@@ -35,21 +43,21 @@ function SplashPage() {
           transitionTime={1000}
           styles={{ ...styles, height: "100%" }}
         >
-          <img src="/assets/1.jpg" />
+          <img src={img1} />
 
-          <img src="/assets/2.jpg" />
+          <img src={img2} />
 
-          <img src="/assets/3.jpg" />
+          <img src={img3} />
 
-          <img src="/assets/4.jpg" />
+          <img src={img4} />
 
-          <img src="/assets/5.jpg" />
+          <img src={img5} />
 
-          <img src="/assets/6.jpg" />
+          <img src={img6} />
 
-          <img src="/assets/7.jpg" />
+          <img src={img7} />
 
-          <img src="/assets/8.jpg" />
+          <img src={img8} />
         </Carousel>
       </div>
     </div>
