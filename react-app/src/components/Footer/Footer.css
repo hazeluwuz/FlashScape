@@ -4,6 +4,7 @@
   gap: 2rem;
   align-items: center;
   z-index: 999;
+  width: 50%;
 }
 
 .footer-repo.round-button {
@@ -26,27 +27,41 @@
   margin-bottom: 15px;
 }
 
-.footer-details {
+.footer-links {
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.footer-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px solid lightgray;
+}
+.footer-details {
+  color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
   flex-direction: column;
+}
+
+.footer-icon {
+  font-size: 30px;
+}
+
+.footer-icon-container {
+  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 33px;
   margin-bottom: 0px;
-  max-width: 186px;
-  cursor: default;
-  font-size: 16px;
-  padding: 0;
-  width: 186px;
-  background-color: #ff8243;
-  color: white;
-  box-sizing: border-box;
-  border: none;
-  height: 60px;
-  margin-bottom: 15px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 25px;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #06060635;
 }
