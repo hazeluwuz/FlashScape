@@ -4,8 +4,10 @@ import { useParams } from "react-router-dom";
 import { updateCardById, deleteCardById } from "../../store/card";
 import TextareaAutosize from "react-textarea-autosize";
 import "./CardEditForm.css";
+import CardDeleteModal from "../CardDeleteModal";
 function CardEditForm({ card, idx }) {
   const [inFocus, setInFocus] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [question, setQuestion] = useState(card?.question || "");
@@ -105,7 +107,7 @@ function CardEditForm({ card, idx }) {
         </div>
       </form>
       <div className="card-edit-actions">
-        {inFocus && !errors.length && (
+        {(inFocus || showModal) && !errors.length && (
           <>
             <button
               className="card-edit-action-button"
@@ -115,13 +117,11 @@ function CardEditForm({ card, idx }) {
             >
               <i className="fas fa-save"></i>
             </button>
-            <button
-              className="card-edit-action-button"
-              onMouseDown={handleDelete}
-              type="button"
-            >
-              <i className="fas fa-trash"></i>
-            </button>
+            <CardDeleteModal
+              setShowModal={setShowModal}
+              showModal={showModal}
+              cardData={card}
+            />
           </>
         )}
         {errors.length > 0 && (
