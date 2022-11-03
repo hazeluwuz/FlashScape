@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { signUp } from "../../../store/session";
+import { login, signUp } from "../../../store/session";
 import "./SignupForm.css";
 const validator = require("email-validator");
 const SignUpForm = ({ closeModal }) => {
@@ -29,7 +29,10 @@ const SignUpForm = ({ closeModal }) => {
       }
     }
   };
-
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    await dispatch(login("demo@aa.io", "password"));
+  };
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -152,6 +155,9 @@ const SignUpForm = ({ closeModal }) => {
         disabled={errors.length}
       >
         Sign Up
+      </button>
+      <button className="login-modal-button round-button" onClick={demoLogin}>
+        Demo User
       </button>
       <div className="display-errors">
         {errors.length > 0 && showErrors && errors[0].split(": ")[1]}
