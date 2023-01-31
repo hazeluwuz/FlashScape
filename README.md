@@ -41,7 +41,7 @@ REACT_APP_BASE_URL=http://localhost:5000
 flask db upgrade
 flask seed all
 ```
-* Now, run ```flask run``` under NotYelp and ```npm start``` under react-app
+* Now, run ```flask run``` under FlashScape and ```npm start``` under react-app
 
 ### Your local host should be running with full functionality now!
 
