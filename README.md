@@ -31,7 +31,7 @@ FlashScape is a simple clone of the Flashcard app "BrainScape". The app currentl
 * Clone the repository in your terminal: ```git clone https://github.com/hazeluwuz/FlashScape.git```
 * cd into FlashScape folder and run ```pipenv install```
 * Open two terminal paths for both FlashScape and react-app.
-* Under FlashScape run ```pipenv shell`` then ```flask run```, for react-app run ```npm install```
+* Under FlashScape run ```pipenv shell``` then ```flask run```, for react-app run ```npm install```
 * Create a ```.env``` file under the root of the backend folder with the following contents:
 ```
 REACT_APP_BASE_URL=http://localhost:5000
