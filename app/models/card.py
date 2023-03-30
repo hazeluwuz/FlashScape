@@ -1,4 +1,3 @@
-from email.policy import default
 from .db import db
 
 class Card(db.Model):

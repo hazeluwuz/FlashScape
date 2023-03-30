@@ -1,4 +1,3 @@
-from email.policy import default
 from .db import db
 
 class Class(db.Model):
@@ -14,9 +13,14 @@ class Class(db.Model):
   decks = db.relationship('Deck', back_populates='class_parent', cascade='all, delete-orphan')
 
   def get_mastery_avg(self):
+    # If there are no decks, return 0
     if len(self.decks) == 0:
       return 0
+
+    # Get the average mastery score for each deck
     deck_avgs = [deck.get_mastery_avg() for deck in self.decks if len(deck.cards) > 0]
+
+    # Return the average mastery score of all decks
     return sum(deck_avgs) / len(deck_avgs) if len(deck_avgs) > 0 else 0
 
   def to_dict(self):
