@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import "./Sidebar.css";
 import LogoutButton from "../auth/LogoutButton";
-import ClassList from "../ClassList";
+import ClassList from "../Class/ClassList";
 import smallLogo from "../../images/small-logo.png";
 
 function Sidebar() {
@@ -30,13 +30,14 @@ function Sidebar() {
       <div className="side-bar-info-outer">
         <div className="side-bar-info">
           <div className="side-bar-logo-container">
-            <img className="side-bar-logo" src={smallLogo} />
+            <img className="side-bar-logo" src={smallLogo} alt="" />
           </div>
           <div className="user-info">
             <div className="user-picture-container">
               <img
                 className="user-picture"
                 src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                alt=""
               />
             </div>
             <div className="user-info-name">

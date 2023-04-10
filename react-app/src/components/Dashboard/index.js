@@ -1,22 +1,15 @@
-import {
-  Switch,
-  useHistory,
-  useLocation,
-  Route,
-  Redirect,
-} from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { Switch, useHistory, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProtectedRoute from "../auth/ProtectedRoute";
 import Sidebar from "../Sidebar";
-import ClassDetails from "../ClassDetails";
-import DeckDetails from "../DeckDetails";
+import ClassDetails from "../Class/ClassDetails";
+import DeckDetails from "../Deck/DeckDetails";
 import "./Dashboard.css";
 
 function Dashboard() {
   const classesSlice = useSelector((state) => state.classes);
   const user = useSelector((state) => state.session.user);
   const classes = user.class_ids.map((id) => classesSlice[id]);
-  const dispatch = useDispatch();
   const history = useHistory();
   const curUrl = useLocation().pathname;
 
