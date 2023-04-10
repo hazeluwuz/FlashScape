@@ -13,9 +13,9 @@ function Dashboard() {
   const history = useHistory();
   const curUrl = useLocation().pathname;
 
-  if (classes.length > 0 && curUrl === "/dashboard") {
-    if (classes[0]) history.push(`/dashboard/${classes[0].id}/decks`);
-  }
+  // if (classes.length > 0 && curUrl === "/dashboard") {
+  //   if (classes[0]) history.push(`/dashboard/${classes[0].id}/decks`);
+  // }
 
   return (
     <div className="dashboard">

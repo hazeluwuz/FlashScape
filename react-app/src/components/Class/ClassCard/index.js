@@ -1,16 +1,11 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import { deleteClassById } from "../../../store/class";
+import { NavLink } from "react-router-dom";
 import ClassDeleteModal from "../ClassDeleteModal";
 
 import "./ClassCard.css";
 
 function ClassCard({ classData }) {
-  const sessionUser = useSelector((state) => state.session.user);
   const [isShown, setIsShown] = useState(false);
-  const history = useHistory();
-  const dispatch = useDispatch();
 
   if (!classData) return null;
 
@@ -26,6 +21,7 @@ function ClassCard({ classData }) {
             <img
               className="class-card-icon"
               src="https://www.brainscape.com/assets/app_icons/ugs.png"
+              alt="class icon"
             />
           </div>
           <div>

@@ -33,7 +33,7 @@ function ClassDetails() {
     if (sessionUser.class_ids.includes(Number(classId))) {
       dispatch(getClassById(classId));
     }
-  }, [dispatch, decks, sessionUser.class_ids, classId]);
+  }, [dispatch, decks, classId, sessionUser.class_ids]);
 
   useEffect(() => {
     setEditing(false);
@@ -120,9 +120,6 @@ function ClassDetails() {
           </Route>
           <Route path={`/dashboard/:classId/decks`}>
             <DeckList deckIds={curClass.deck_ids} />
-          </Route>
-          <Route>
-            <Redirect to="/" />
           </Route>
         </Switch>
       </div>
