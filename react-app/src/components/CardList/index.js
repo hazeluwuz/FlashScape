@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCards } from "../../store/card";
-import CardDisplay from "../CardDisplay";
 import CardEditForm from "../CardEditForm";
 import CreateCardModal from "../CreateCardModal";
 import "./CardList.css";
@@ -10,7 +9,7 @@ function CardList({ card_ids }) {
   const cards = useSelector((state) => state.cards);
   useEffect(() => {
     dispatch(getAllCards(card_ids));
-  }, [dispatch]);
+  }, [dispatch, card_ids]);
   return (
     <div className="card-list">
       {card_ids.map((card_id, idx) => (
