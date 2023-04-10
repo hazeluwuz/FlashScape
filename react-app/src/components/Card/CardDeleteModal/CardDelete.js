@@ -1,13 +1,11 @@
 import { deleteCardById } from "../../../store/card";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./CardDelete.css";
 function CardDelete({ closeModal, cardData }) {
   const dispatch = useDispatch();
-  const history = useHistory();
   const handleDelete = async (e) => {
     e.preventDefault();
-    const res = await dispatch(deleteCardById(cardData.id));
+    dispatch(deleteCardById(cardData.id));
   };
 
   return (

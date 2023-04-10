@@ -33,7 +33,7 @@ function ClassDetails() {
     if (sessionUser.class_ids.includes(Number(classId))) {
       dispatch(getClassById(classId));
     }
-  }, [dispatch, decks]);
+  }, [dispatch, decks, sessionUser.class_ids, classId]);
 
   useEffect(() => {
     setEditing(false);

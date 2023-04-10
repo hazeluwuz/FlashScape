@@ -21,14 +21,8 @@ function DeckDetails() {
   const curClass = classes[classId];
   const deck = decks[deckId];
 
-  // const handleDelete = async (e) => {
-  //   e.preventDefault();
-  //   const res = await dispatch(deleteDeckById(deckId));
-  //   history.push(`/dashboard/${classId}`);
-  // };
-
   if (!deck) return <Redirect to={`/dashboard/${classId}`} />;
-  else if (deck && deck.class_id !== classId) {
+  else if (deck && Number(deck.class_id) !== Number(classId)) {
     return <Redirect to={`/dashboard/${classId}`} />;
   }
 
