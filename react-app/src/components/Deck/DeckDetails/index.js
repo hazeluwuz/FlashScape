@@ -1,15 +1,13 @@
 import {
   useParams,
-  useHistory,
   NavLink,
   Link,
   Switch,
   Redirect,
   Route,
 } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import { deleteDeckById } from "../../../store/deck";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 import CardList from "../../Card/CardList";
 import DeckEditForm from "../DeckEditForm";
 import "./DeckDetails.css";
@@ -22,17 +20,15 @@ function DeckDetails() {
   const { classId, deckId } = useParams();
   const curClass = classes[classId];
   const deck = decks[deckId];
-  const history = useHistory();
-  const dispatch = useDispatch();
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    const res = await dispatch(deleteDeckById(deckId));
-    history.push(`/dashboard/${classId}`);
-  };
+  // const handleDelete = async (e) => {
+  //   e.preventDefault();
+  //   const res = await dispatch(deleteDeckById(deckId));
+  //   history.push(`/dashboard/${classId}`);
+  // };
 
   if (!deck) return <Redirect to={`/dashboard/${classId}`} />;
-  else if (deck && deck.class_id != classId) {
+  else if (deck && deck.class_id !== classId) {
     return <Redirect to={`/dashboard/${classId}`} />;
   }
 

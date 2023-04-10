@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { createNewCard, updateCardById } from "../../../store/card";
+import { createNewCard } from "../../../store/card";
 import "./CreateCardForm.css";
 function CreateCardForm({ closeModal }) {
   const [errors, setErrors] = useState([]);
