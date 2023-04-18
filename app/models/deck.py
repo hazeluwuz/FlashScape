@@ -1,11 +1,13 @@
-from .db import db
+from .db import db, add_prefix_for_prod, SCHEMA, environment
 
 class Deck(db.Model):
   __tablename__ = "decks"
+  if environment == "production":
+    __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(50), nullable=False)
-  class_id = db.Column(db.Integer, db.ForeignKey("classes.id"), nullable=False)
+  class_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("classes.id")), nullable=False)
 
   class_parent = db.relationship("Class", back_populates="decks")
   cards = db.relationship("Card", back_populates="deck_parent", cascade="all, delete-orphan")
