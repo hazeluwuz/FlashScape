@@ -1,13 +1,15 @@
-from .db import db
+from .db import db, add_prefix_for_prod, SCHEMA, environment
 
 class Class(db.Model):
   __tablename__ = 'classes'
+  if environment == "production":
+    __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(255), nullable=False)
   description = db.Column(db.String(255), nullable=True)
   purpose = db.Column(db.String(255), nullable=True, default='General Learning/Other')
-  owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+  owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
   owner = db.relationship('User', back_populates='classes')
   decks = db.relationship('Deck', back_populates='class_parent', cascade='all, delete-orphan')

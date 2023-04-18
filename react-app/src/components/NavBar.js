@@ -1,8 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import LoginModal from "./auth/LoginModal";
 import SignUpModal from "./auth/SignupModal";
-import LogoutButton from "./auth/LogoutButton";
 import logo from "../images/logo.png";
 import "./NavBar.css";
 const NavBar = () => {
@@ -10,7 +8,7 @@ const NavBar = () => {
     <div className="nav-container">
       <div className="logo-container">
         <div className="nav-logo">
-          <img src={logo} className="logo-img" />
+          <img src={logo} alt="" className="logo-img" />
         </div>
       </div>
       <div className="nav-links">
