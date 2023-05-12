@@ -15,7 +15,7 @@ function Footer() {
           </a>
           <a
             className="footer-icon-container"
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/in/hazel-guzzetti-50445b23b/"
             target="_blank"
           >
             <i className="fab fa-linkedin fa-xl footer-icon " />
