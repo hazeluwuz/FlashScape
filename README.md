@@ -32,7 +32,7 @@ FlashScape is a simple clone of the Flashcard app "BrainScape". The app currentl
 * cd into FlashScape folder and run ```pipenv install -r requirements.txt```
 * Open two terminal paths for both FlashScape and react-app.
 * Under FlashScape run ```pipenv shell``` then ```flask run```, for react-app run ```npm install```
-* Create a ```.env``` file under the root of the backend folder with the following contents:
+* Create a ```.env``` file under the root of the react-app folder with the following contents:
 ```
 REACT_APP_BASE_URL=http://localhost:5000
 ```
